@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="accelerator" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/accelerator" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="module" />
+					<Add directory="manager" />
+					<Add directory="parser" />
+					<Add directory="ast" />
+					<Add directory="collections" />
+					<Add directory="context" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/accelerator" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="module" />
+					<Add directory="manager" />
+					<Add directory="parser" />
+					<Add directory="ast" />
+					<Add directory="collections" />
+					<Add directory="context" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="ast/aclass.cpp" />
+		<Unit filename="ast/aclass.h" />
+		<Unit filename="ast/aclassobject.cpp" />
+		<Unit filename="ast/aclassobject.h" />
+		<Unit filename="ast/aclasstype.cpp" />
+		<Unit filename="ast/aclasstype.h" />
+		<Unit filename="ast/acontext.cpp" />
+		<Unit filename="ast/acontext.h" />
+		<Unit filename="ast/aenum.cpp" />
+		<Unit filename="ast/aenum.h" />
+		<Unit filename="ast/afunction.cpp" />
+		<Unit filename="ast/afunction.h" />
+		<Unit filename="ast/aidentify.cpp" />
+		<Unit filename="ast/aidentify.h" />
+		<Unit filename="ast/ainterface.cpp" />
+		<Unit filename="ast/ainterface.h" />
+		<Unit filename="ast/amodule.cpp" />
+		<Unit filename="ast/amodule.h" />
+		<Unit filename="ast/anode.cpp" />
+		<Unit filename="ast/anode.h" />
+		<Unit filename="ast/apackage.cpp" />
+		<Unit filename="ast/apackage.h" />
+		<Unit filename="ast/atemplate.cpp" />
+		<Unit filename="ast/atemplate.h" />
+		<Unit filename="ast/atoken.cpp" />
+		<Unit filename="ast/atoken.h" />
+		<Unit filename="context/classobject.cpp" />
+		<Unit filename="context/classobject.h" />
+		<Unit filename="context/classtype.cpp" />
+		<Unit filename="context/classtype.h" />
+		<Unit filename="context/enum.cpp" />
+		<Unit filename="context/enum.h" />
+		<Unit filename="context/expression.cpp" />
+		<Unit filename="context/expression.h" />
+		<Unit filename="context/interface.cpp" />
+		<Unit filename="context/interface.h" />
+		<Unit filename="context/literal.cpp" />
+		<Unit filename="context/literal.h" />
+		<Unit filename="context/literaltype.h" />
+		<Unit filename="context/node.cpp" />
+		<Unit filename="context/node.h" />
+		<Unit filename="context/nodetype.h" />
+		<Unit filename="context/package.cpp" />
+		<Unit filename="context/package.h" />
+		<Unit filename="context/statment.cpp" />
+		<Unit filename="context/statment.h" />
+		<Unit filename="context/token.cpp" />
+		<Unit filename="context/token.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="manager/packagemanager.cpp" />
+		<Unit filename="manager/packagemanager.h" />
+		<Unit filename="module/class.cpp" />
+		<Unit filename="module/class.h" />
+		<Unit filename="module/classobject.cpp" />
+		<Unit filename="module/classobject.h" />
+		<Unit filename="module/enum.cpp" />
+		<Unit filename="module/enum.h" />
+		<Unit filename="module/enumbit.cpp" />
+		<Unit filename="module/enumbit.h" />
+		<Unit filename="module/function.cpp" />
+		<Unit filename="module/function.h" />
+		<Unit filename="module/identify.cpp" />
+		<Unit filename="module/identify.h" />
+		<Unit filename="module/identifylist.cpp" />
+		<Unit filename="module/identifylist.h" />
+		<Unit filename="module/interface.cpp" />
+		<Unit filename="module/interface.h" />
+		<Unit filename="module/package.cpp" />
+		<Unit filename="module/package.h" />
+		<Unit filename="module/protocol.h" />
+		<Unit filename="module/statment.cpp" />
+		<Unit filename="module/statment.h" />
+		<Unit filename="module/template.cpp" />
+		<Unit filename="module/template.h" />
+		<Unit filename="parser/lexer.l">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="parser/lexer.scanner.cc" />
+		<Unit filename="parser/parser.h" />
+		<Unit filename="parser/parser.y">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="parser/tokentype.h" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

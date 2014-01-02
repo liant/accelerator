@@ -1,0 +1,362 @@
+# depslib dependency file v1.0
+1385295831 source:/home/xkaying/桌面/cshine/accelerator/main.cpp
+	<iostream>
+
+1386102458 source:/home/xkaying/桌面/cshine/accelerator/module/identify.cpp
+	"identify.h"
+
+1386102858 /home/xkaying/桌面/cshine/accelerator/module/identify.h
+	<string>
+	"protocol.h"
+
+1385297622 /home/xkaying/桌面/cshine/accelerator/module/protocol.h
+
+1386194067 source:/home/xkaying/桌面/cshine/accelerator/module/class.cpp
+	"class.h"
+
+1388644947 /home/xkaying/桌面/cshine/accelerator/module/class.h
+	"identifylist.h"
+	"function.h"
+	"template.h"
+	"classobject.h"
+	<string>
+	<list>
+
+1386103005 /home/xkaying/桌面/cshine/accelerator/module/identifylist.h
+	"identify.h"
+	"protocol.h"
+	<list>
+	<string>
+
+1386194443 /home/xkaying/桌面/cshine/accelerator/module/function.h
+	"identifylist.h"
+	"class.h"
+	"template.h"
+	"classobject.h"
+	"statment.h"
+	<list>
+
+1386277378 /home/xkaying/桌面/cshine/accelerator/module/template.h
+	"identifylist.h"
+	"classobject.h"
+
+1386193847 /home/xkaying/桌面/cshine/accelerator/module/interface.h
+	"identifylist.h"
+	<string>
+	<list>
+
+1386102410 /home/xkaying/桌面/cshine/accelerator/module/classobject.h
+	"identify.h"
+	<cstdint>
+
+1386103054 source:/home/xkaying/桌面/cshine/accelerator/module/classobject.cpp
+	"classobject.h"
+
+1386194944 source:/home/xkaying/桌面/cshine/accelerator/module/function.cpp
+	"function.h"
+
+1386194141 source:/home/xkaying/桌面/cshine/accelerator/module/interface.cpp
+	"interface.h"
+	"function.h"
+
+1386277345 source:/home/xkaying/桌面/cshine/accelerator/module/template.cpp
+	"template.h"
+
+1386103220 source:/home/xkaying/桌面/cshine/accelerator/module/identifylist.cpp
+	"identifylist.h"
+
+1386110077 source:/home/xkaying/桌面/cshine/accelerator/module/enum.cpp
+	"enum.h"
+
+1386109407 /home/xkaying/桌面/cshine/accelerator/module/enum.h
+	<map>
+	"identify.h"
+
+1386110347 source:/home/xkaying/桌面/cshine/accelerator/module/enumbit.cpp
+	"enumbit.h"
+
+1386110089 /home/xkaying/桌面/cshine/accelerator/module/enumbit.h
+	<map>
+	"identify.h"
+
+1386277075 /home/xkaying/桌面/cshine/accelerator/module/statment.h
+	"identify.h"
+	"classobject.h"
+	<list>
+
+1386277109 source:/home/xkaying/桌面/cshine/accelerator/module/statment.cpp
+	"statment.h"
+
+1386278854 source:/home/xkaying/桌面/cshine/accelerator/module/package.cpp
+	"package.h"
+
+1386278814 /home/xkaying/桌面/cshine/accelerator/module/package.h
+	"identifylist.h"
+	"interface.h"
+	"class.h"
+	"enum.h"
+	"enumbit.h"
+	<string>
+
+1386278912 source:/home/xkaying/桌面/cshine/accelerator/manager/packagemanager.cpp
+	"packagemanager.h"
+
+1386279389 /home/xkaying/桌面/cshine/accelerator/manager/packagemanager.h
+
+1386279460 source:/home/xkaying/桌面/cshine/accelerator/manager/tokenmanager.cpp
+	"tokenmanager.h"
+
+1388237575 /home/xkaying/桌面/cshine/accelerator/manager/tokenmanager.h
+	"../parser/token.h"
+
+1388591225 /home/xkaying/桌面/cshine/accelerator/parser/token.h
+	<string>
+
+1386640128 source:/home/xkaying/桌面/cshine/accelerator/ast/aclasstype.cpp
+	"aclasstype.h"
+
+1386640160 /home/xkaying/桌面/cshine/accelerator/ast/aclasstype.h
+	"anode.h"
+	"aidentify.h"
+	<list>
+
+1388234606 /home/xkaying/桌面/cshine/accelerator/ast/anode.h
+	"amodule.h"
+	"acontext.h"
+	<list>
+
+1386645228 /home/xkaying/桌面/cshine/accelerator/ast/amodule.h
+
+1388235066 /home/xkaying/桌面/cshine/accelerator/ast/acontext.h
+	<string>
+	"amodule.h"
+
+1388234832 /home/xkaying/桌面/cshine/accelerator/ast/aidentify.h
+	<string>
+	"anode.h"
+
+1386643822 source:/home/xkaying/桌面/cshine/accelerator/ast/aenum.cpp
+	"aenum.h"
+
+1386643801 /home/xkaying/桌面/cshine/accelerator/ast/aenum.h
+	"anode.h"
+	"amodule.h"
+	"aclassobject.h"
+	"atoken.h"
+	<string>
+
+1386640897 /home/xkaying/桌面/cshine/accelerator/ast/aclassobject.h
+	"anode.h"
+	"aclasstype.h"
+
+1386643394 /home/xkaying/桌面/cshine/accelerator/ast/atoken.h
+	"anode.h"
+	"../parser/token.h"
+
+1386645448 source:/home/xkaying/桌面/cshine/accelerator/ast/ainterface.cpp
+	"ainterface.h"
+
+1386645246 /home/xkaying/桌面/cshine/accelerator/ast/ainterface.h
+	"anode.h"
+	"aclasstype.h"
+	"afunction.h"
+	"atemplate.h"
+	"atoken.h"
+	<list>
+	<string>
+
+1386645203 /home/xkaying/桌面/cshine/accelerator/ast/afunction.h
+	"anode.h"
+
+1386640703 /home/xkaying/桌面/cshine/accelerator/ast/atemplate.h
+	"anode.h"
+	"aclassobject.h"
+	<list>
+
+1386639143 source:/home/xkaying/桌面/cshine/accelerator/ast/apackage.cpp
+	"apackage.h"
+	"anode.h"
+
+1386639003 /home/xkaying/桌面/cshine/accelerator/ast/apackage.h
+	<list>
+	"anode.h"
+
+1386640707 source:/home/xkaying/桌面/cshine/accelerator/ast/atemplate.cpp
+	"atemplate.h"
+
+1386643385 source:/home/xkaying/桌面/cshine/accelerator/ast/atoken.cpp
+	"atoken.h"
+
+1388591218 source:/home/xkaying/桌面/cshine/accelerator/parser/token.cpp
+	"token.h"
+
+1386657944 source:/home/xkaying/桌面/cshine/accelerator/ast/aclass.cpp
+	"aclass.h"
+
+1388234648 /home/xkaying/桌面/cshine/accelerator/ast/aclass.h
+	"anode.h"
+	"aclasstype.h"
+	"afunction.h"
+	"atemplate.h"
+	"atoken.h"
+	<list>
+	<string>
+
+1388234715 source:/home/xkaying/桌面/cshine/accelerator/ast/aclassobject.cpp
+	"aclassobject.h"
+
+1386631064 source:/home/xkaying/桌面/cshine/accelerator/ast/acontext.cpp
+	"acontext.h"
+
+1386645214 source:/home/xkaying/桌面/cshine/accelerator/ast/afunction.cpp
+	"afunction.h"
+
+1386633090 source:/home/xkaying/桌面/cshine/accelerator/ast/aidentify.cpp
+	"aidentify.h"
+
+1386633280 source:/home/xkaying/桌面/cshine/accelerator/ast/amodule.cpp
+	"amodule.h"
+
+1388235109 source:/home/xkaying/桌面/cshine/accelerator/ast/anode.cpp
+	"anode.h"
+
+1388653794 source:/home/xkaying/桌面/cshine/accelerator/parser/lexer.l
+	<stdio.h>
+	"../context/context.h"
+	"tokentype.h"
+	"parser.parser.hh"
+
+1388592135 /home/xkaying/桌面/cshine/accelerator/parser/parser.h
+	"token.h"
+
+1388592183 source:/home/xkaying/桌面/cshine/accelerator/parser/lexer.scanner.cc
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<inttypes.h>
+	<stdio.h>
+	"token.h"
+	"parser.h"
+	<unistd.h>
+
+1388595203 source:/home/xkaying/桌面/cshine/accelerator/context/token.cpp
+	"token.h"
+
+1388651537 /home/xkaying/桌面/cshine/accelerator/context/token.h
+	"node.h"
+	"../parser/tokentype.h"
+	<string>
+
+1388595090 /home/xkaying/桌面/cshine/accelerator/context/node.h
+	"nodetype.h"
+	<list>
+
+1388602796 /home/xkaying/桌面/cshine/accelerator/context/nodetype.h
+
+1388653854 /home/xkaying/桌面/cshine/accelerator/parser/tokentype.h
+
+1388656958 source:/home/xkaying/桌面/cshine/accelerator/context/enum.cpp
+	"enum.h"
+
+1388656973 /home/xkaying/桌面/cshine/accelerator/context/enum.h
+	"token.h"
+	"classobject.h"
+	"classtype.h"
+	<list>
+
+1388657152 /home/xkaying/桌面/cshine/accelerator/context/classobject.h
+	"node.h"
+	"classtype.h"
+	"expression.h"
+
+1388596682 source:/home/xkaying/桌面/cshine/accelerator/context/literal.cpp
+	"literal.h"
+
+1388596599 /home/xkaying/桌面/cshine/accelerator/context/literal.h
+	"token.h"
+	"literaltype.h"
+
+1388596535 /home/xkaying/桌面/cshine/accelerator/context/literaltype.h
+
+1388594818 source:/home/xkaying/桌面/cshine/accelerator/context/node.cpp
+	"node.h"
+
+1388597859 source:/home/xkaying/桌面/cshine/accelerator/context/package.cpp
+	"package.h"
+
+1388597815 /home/xkaying/桌面/cshine/accelerator/context/package.h
+	"node.h"
+	"token.h"
+	<list>
+
+1388602972 source:/home/xkaying/桌面/cshine/accelerator/context/classtype.cpp
+	"classtype.h"
+
+1388603038 /home/xkaying/桌面/cshine/accelerator/context/classtype.h
+	"token.h"
+	"expression.h"
+	<list>
+
+1388603024 /home/xkaying/桌面/cshine/accelerator/context/expression.h
+
+1388602122 source:/home/xkaying/桌面/cshine/accelerator/context/classobject.cpp
+	"classobject.h"
+
+1388603024 source:/home/xkaying/桌面/cshine/accelerator/context/expression.cpp
+	"expression.h"
+
+1388645854 source:/home/xkaying/桌面/cshine/accelerator/context/template.cpp
+	"template.h"
+
+1388645854 /home/xkaying/桌面/cshine/accelerator/context/template.h
+
+1388645914 source:/home/xkaying/桌面/cshine/accelerator/context/function.cpp
+	"function.h"
+
+1388654188 /home/xkaying/桌面/cshine/accelerator/context/function.h
+	"node.h"
+
+1388645970 source:/home/xkaying/桌面/cshine/accelerator/context/interface.cpp
+	"interface.h"
+
+1388645958 /home/xkaying/桌面/cshine/accelerator/context/interface.h
+	"node.h"
+	"template.h"
+	"token.h"
+	"classtype.h"
+	"function.h"
+	<list>
+
+1388603757 source:/home/xkaying/桌面/cshine/accelerator/context/statment.cpp
+	"statment.h"
+
+1388645993 /home/xkaying/桌面/cshine/accelerator/context/statment.h
+	"token.h"
+
+1388652759 /home/xkaying/桌面/cshine/accelerator/context/context.h
+	"node.h"
+	"token.h"
+	"literal.h"
+	"expression.h"
+	"statment.h"
+	"classtype.h"
+	"classobject.h"
+	"function.h"
+	"class.h"
+	"enum.h"
+	"interface.h"
+	"template.h"
+	"package.h"
+
+1388654088 /home/xkaying/桌面/cshine/accelerator/context/class.h
+	"node.h"
+
+1388654112 /home/xkaying/桌面/cshine/accelerator/parser/parser.parser.hh
+
+1388654102 source:/home/xkaying/桌面/cshine/accelerator/context/class.cpp
+	"class.h"
+
+1388650899 source:/home/xkaying/桌面/cshine/accelerator/context/context.cpp
+	"context.h"
+
