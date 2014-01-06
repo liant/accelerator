@@ -11,7 +11,7 @@
 class Class:public Node
 {
     public:
-        Class(Template *pTemplate,Token *pProtocol,ClassType *pType,Token *pName,std::list<ClassType*> *pExtendList);
+        Class(ClassType *pType,Token *pName,std::list<ClassType*> *pExtendList);
         virtual ~Class();
         void setContent(std::list<Node*> *pContent);
     protected:

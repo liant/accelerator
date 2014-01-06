@@ -2,10 +2,13 @@
 #define NODE_H
 
 #include "nodetype.h"
+#include "protocoltype.h"
+#include "modifier.h"
 
 #include <list>
 
 class Context;
+class Template;
 
 class Node
 {
@@ -14,11 +17,18 @@ class Node
         Node(NodeType nType);
         virtual ~Node();
         //生成代码函数,并把代码写入上下文中////////////////////////
-        void codegen(Context *pContext);
+        virtual void codegen(Context *pContext);
+        //检查节点,是否是符合标准的节点
+        virtual bool checkNode();
         /////////////////////////////////////
-        NodeType nodeType;
+        void setProtocol(Protocol type);
+        void setModifiers(Modifier modifiers);
+        void setTemplate(Template *pTemplate);
     protected:
-        std::list<Node*> children;
+        NodeType nodeType;
+        Protocol protocolType;
+        Modifier modifiers;
+        Template *pTemplate;
     private:
 
 };

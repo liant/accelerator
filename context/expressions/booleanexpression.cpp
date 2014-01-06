@@ -1,6 +1,7 @@
 #include "booleanexpression.h"
 
-BooleanExpression::BooleanExpression()
+BooleanExpression::BooleanExpression(Expression *pExpression)
+    :Expression(ET_Boolean),pExpression(pExpression)
 {
     //ctor
 }

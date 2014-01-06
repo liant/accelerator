@@ -9,15 +9,12 @@
 class ClassType:public Node
 {
     public:
-        ClassType(Token *ptoken);
+        ClassType();
         ClassType(std::list<Token*> *pList);
         virtual ~ClassType();
         void setTemplateArgument(std::list<Expression*> *pTemplateArgument);
     protected:
-        union{
-            Token *pName;
-            std::list<Token*> *pNameList;
-        };
+        std::list<Token*> *pNameList;
         std::list<Expression*> *pTemplateArgument;
 
     private:

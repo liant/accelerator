@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Enum::Enum(Token *pProtocol,ClassType *pSuperName,Token *pName,ClassType *pExtendName)
-:Node(NT_Enum),pProtocol(pProtocol),pSuperName(pSuperName),pName(pName),pExtendName(pExtendName)
+Enum::Enum(ClassType *pSuperName,Token *pName,ClassType *pExtendName)
+:Node(NT_Enum),pSuperName(pSuperName),pName(pName),pExtendName(pExtendName)
 {
     //ctor
 }

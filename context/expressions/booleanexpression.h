@@ -1,13 +1,15 @@
 #ifndef BOOLEANEXPRESSION_H
 #define BOOLEANEXPRESSION_H
 
+#include "../expression.h"
 
-class BooleanExpression
+class BooleanExpression:public Expression
 {
     public:
-        BooleanExpression();
+        BooleanExpression(Expression *pExpression);
         virtual ~BooleanExpression();
     protected:
+        Expression *pExpression;
     private:
 };
 

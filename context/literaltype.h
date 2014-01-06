@@ -7,7 +7,11 @@ enum LiteralType{
     FloatLiteral,
     CharacterLiteral,
     StringLiteral,
-    NullLiteral
+    NullLiteral,
+    TrueLiteral,
+    FalseLiteral,
+    ThisLiteral,
+    SuperLiteral,
 };
 
 

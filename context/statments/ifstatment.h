@@ -7,11 +7,11 @@
 class IfStatment:public Statment
 {
     public:
-        IfStatment(BooleanExpression *pBooleanExpression  ,
+        IfStatment(Expression *pBooleanExpression  ,
                    Statment *pThenStatment,Statment *pElseStatment=nullptr);
         virtual ~IfStatment();
     protected:
-        BooleanExpression *pBooleanExpression;
+        Expression *pBooleanExpression;
         Statment *pThenStatment;
         Statment *pElseStatment;
     private:

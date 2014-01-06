@@ -2,7 +2,7 @@
 
 using namespace std;
 
-ClassType::ClassType(Token *ptoken):Node(NT_ClassType),pName(ptoken),simple(true)
+ClassType::ClassType():Node(NT_ClassType),simple(true)
 {
     //ctor
 }

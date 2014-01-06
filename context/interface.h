@@ -12,12 +12,10 @@
 class Interface:public Node
 {
     public:
-        Interface(Template *pTemplate,Token *pProtocol,Token *pName,std::list<ClassType*> *pExtend);
+        Interface(Token *pName,std::list<ClassType*> *pExtend);
         virtual ~Interface();
         void setContent(std::list<Function*> *pContent);
     protected:
-        Template *pTemplate;
-        Token *pProtocol;
         Token *pName;
         std::list<ClassType*> *pExtend;
         std::list<Function*> *pContent;

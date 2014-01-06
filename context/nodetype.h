@@ -15,7 +15,9 @@ enum NodeType
     NT_Template,
     NT_Function,
     NT_Statment,
-    NT_Expression
+    NT_Expression,
+    NT_Block,
+    NT_ClassObjectBlock,
 };
 
 #endif // NODETYPE_H_INCLUDED

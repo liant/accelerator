@@ -1,7 +1,7 @@
 #include "class.h"
 
-Class::Class(Template *pTemplate,Token *pProtocol,ClassType *pType,Token *pName,std::list<ClassType*> *pExtendList)
-    :Node(NT_Class),pTemplate(pTemplate),pProtocol(pProtocol),pType(pType),pName(pName),pExtendList(pExtendList),pContent(0)
+Class::Class(ClassType *pType,Token *pName,std::list<ClassType*> *pExtendList)
+    :Node(NT_Class),pType(pType),pName(pName),pExtendList(pExtendList),pContent(nullptr)
 {
     //ctor
 }

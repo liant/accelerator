@@ -1,6 +1,7 @@
 #include "node.h"
 
-Node::Node(NodeType nType):nodeType(nType)
+Node::Node(NodeType nType)
+:nodeType(nType),protocolType(Protocol_Protected),modifiers(Modifier_None),pTemplate(0)
 {
     //ctor
 }
@@ -26,4 +27,24 @@ void Node::codegen(Context *pContext)
     //退出当前模块
     pContext->exitModule();
     */
+}
+
+bool Node::checkNode()
+{
+    return true;
+}
+
+void Node::setProtocol(Protocol type)
+{
+    this->protocolType=type;
+}
+
+void Node::setTemplate(Template *pTemplate)
+{
+    this->pTemplate=pTemplate;
+}
+
+void Node::setModifiers(Modifier modifiers)
+{
+    this->modifiers=modifiers;
 }

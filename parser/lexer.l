@@ -57,7 +57,7 @@ identifier             ({letter_char}|"_"){ident_char}*
 #include "parser.parser.hh"
 
 
-#define NewTokenKey(x) { yylval.token=new Token(x); return x;  }
+#define NewTokenKey(x) { yylval.tokentype=x; return x;  }
 #define NewTokenValue(x) {yylval.token=new Token(x,yytext); return x;}
 
 %}

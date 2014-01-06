@@ -5,6 +5,9 @@
 enum StatmentType
 {
     ST_None,
+    ST_Expression,
+    ST_Declare,
+    ST_Block,
     //条件语句
     ST_If,
     ST_Switch,
@@ -15,6 +18,7 @@ enum StatmentType
     ST_Break,
     ST_Continue,
     ST_Return,
+    ST_Case,
 };
 
 

@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Interface::Interface(Template *pTemplate,Token *pProtocol,Token *pName,list<ClassType*> *pExtend)
-            :Node(NT_Interface),pTemplate(pTemplate),pProtocol(pProtocol),pName(pName),pExtend(pExtend)
+Interface::Interface(Token *pName,list<ClassType*> *pExtend)
+            :Node(NT_Interface),pName(pName),pExtend(pExtend)
 {
     //ctor
 }
