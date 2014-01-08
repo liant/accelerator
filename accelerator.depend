@@ -465,58 +465,62 @@
 1386643385 source:/home/xkaying/桌面/accelerator/accelerator/ast/atoken.cpp
 	"atoken.h"
 
-1388657694 source:/home/xkaying/桌面/accelerator/accelerator/context/class.cpp
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/context/class.cpp
 	"class.h"
 
-1388657877 /home/xkaying/桌面/accelerator/accelerator/context/class.h
+1389182823 /home/xkaying/桌面/accelerator/accelerator/context/class.h
 	"node.h"
 	"token.h"
 	"template.h"
 	"classtype.h"
 	<list>
 
-1388769942 /home/xkaying/桌面/accelerator/accelerator/context/node.h
+1389182823 /home/xkaying/桌面/accelerator/accelerator/context/node.h
 	"nodetype.h"
+	"protocoltype.h"
+	"modifier.h"
 	<list>
 
-1388602796 /home/xkaying/桌面/accelerator/accelerator/context/nodetype.h
+1389180475 /home/xkaying/桌面/accelerator/accelerator/context/nodetype.h
 
-1388651537 /home/xkaying/桌面/accelerator/accelerator/context/token.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/token.h
 	"node.h"
 	"../parser/tokentype.h"
 	<string>
 
 1388653854 /home/xkaying/桌面/accelerator/accelerator/parser/tokentype.h
 
-1388657349 /home/xkaying/桌面/accelerator/accelerator/context/template.h
+1389182823 /home/xkaying/桌面/accelerator/accelerator/context/template.h
 	"node.h"
 	"classobject.h"
 	<list>
 
-1388657192 /home/xkaying/桌面/accelerator/accelerator/context/classobject.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/classobject.h
 	"node.h"
 	"classtype.h"
 	"expression.h"
 
-1388603038 /home/xkaying/桌面/accelerator/accelerator/context/classtype.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/classtype.h
 	"token.h"
 	"expression.h"
 	<list>
 
-1388769990 /home/xkaying/桌面/accelerator/accelerator/context/expression.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/expression.h
 	"node.h"
 	"expressiontype.h"
 
-1388657123 source:/home/xkaying/桌面/accelerator/accelerator/context/classobject.cpp
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/context/classobject.cpp
 	"classobject.h"
 
-1388602972 source:/home/xkaying/桌面/accelerator/accelerator/context/classtype.cpp
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/context/classtype.cpp
 	"classtype.h"
 
 1388650899 source:/home/xkaying/桌面/accelerator/accelerator/context/context.cpp
 	"context.h"
 
-1388777097 /home/xkaying/桌面/accelerator/accelerator/context/context.h
+1389178704 /home/xkaying/桌面/accelerator/accelerator/context/context.h
+	"protocoltype.h"
+	"modifier.h"
 	"node.h"
 	"token.h"
 	"literal.h"
@@ -525,11 +529,14 @@
 	"classtype.h"
 	"classobject.h"
 	"function.h"
+	"delegate.h"
 	"class.h"
 	"enum.h"
 	"interface.h"
 	"template.h"
 	"package.h"
+	"block.h"
+	"classobjectblock.h"
 	"statments/blockstatment.h"
 	"statments/breakstatment.h"
 	"statments/continuestatment.h"
@@ -540,6 +547,7 @@
 	"statments/returnstatment.h"
 	"statments/switchstatment.h"
 	"statments/whilestatment.h"
+	"statments/casestatment.h"
 	"expressions/accessexpression.h"
 	"expressions/assignmentexpression.h"
 	"expressions/booleanexpression.h"
@@ -550,29 +558,39 @@
 	"expressions/nifixexpression.h"
 	"expressions/postfixexpression.h"
 	"expressions/prefixexpression.h"
+	"expressions/arrayexpression.h"
+	"expressions/declareexpression.h"
 
-1388596599 /home/xkaying/桌面/accelerator/accelerator/context/literal.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/literal.h
 	"token.h"
 	"literaltype.h"
 
-1388596535 /home/xkaying/桌面/accelerator/accelerator/context/literaltype.h
+1389001207 /home/xkaying/桌面/accelerator/accelerator/context/literaltype.h
 
-1388660473 /home/xkaying/桌面/accelerator/accelerator/context/statment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statment.h
 	"node.h"
 	"statmenttype.h"
 
-1388682632 /home/xkaying/桌面/accelerator/accelerator/context/statmenttype.h
+1388996428 /home/xkaying/桌面/accelerator/accelerator/context/statmenttype.h
 
-1388654188 /home/xkaying/桌面/accelerator/accelerator/context/function.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/function.h
 	"node.h"
+	"token.h"
+	"classtype.h"
+	"modifier.h"
+	"expressiontype.h"
+	"statment.h"
+	"classobject.h"
+	<list>
 
-1388656973 /home/xkaying/桌面/accelerator/accelerator/context/enum.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/enum.h
 	"token.h"
 	"classobject.h"
 	"classtype.h"
+	"protocoltype.h"
 	<list>
 
-1388645958 /home/xkaying/桌面/accelerator/accelerator/context/interface.h
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/interface.h
 	"node.h"
 	"template.h"
 	"token.h"
@@ -580,59 +598,61 @@
 	"function.h"
 	<list>
 
-1388597815 /home/xkaying/桌面/accelerator/accelerator/context/package.h
+1389183111 /home/xkaying/桌面/accelerator/accelerator/context/package.h
 	"node.h"
 	"token.h"
+	"protocoltype.h"
 	<list>
 
-1388656958 source:/home/xkaying/桌面/accelerator/accelerator/context/enum.cpp
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/context/enum.cpp
 	"enum.h"
 
-1388732217 source:/home/xkaying/桌面/accelerator/accelerator/context/expression.cpp
+1389183141 source:/home/xkaying/桌面/accelerator/accelerator/context/expression.cpp
 	"expression.h"
 
-1388654200 source:/home/xkaying/桌面/accelerator/accelerator/context/function.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/function.cpp
 	"function.h"
 
-1388645970 source:/home/xkaying/桌面/accelerator/accelerator/context/interface.cpp
+1389183169 source:/home/xkaying/桌面/accelerator/accelerator/context/interface.cpp
 	"interface.h"
 
-1388596682 source:/home/xkaying/桌面/accelerator/accelerator/context/literal.cpp
+1389183175 source:/home/xkaying/桌面/accelerator/accelerator/context/literal.cpp
 	"literal.h"
 
-1388594818 source:/home/xkaying/桌面/accelerator/accelerator/context/node.cpp
+1389183182 source:/home/xkaying/桌面/accelerator/accelerator/context/node.cpp
 	"node.h"
 
-1388597859 source:/home/xkaying/桌面/accelerator/accelerator/context/package.cpp
+1389183109 source:/home/xkaying/桌面/accelerator/accelerator/context/package.cpp
 	"package.h"
+	"../modules/mpackage.h"
 
-1388660459 source:/home/xkaying/桌面/accelerator/accelerator/context/statment.cpp
+1389183408 source:/home/xkaying/桌面/accelerator/accelerator/context/statment.cpp
 	"statment.h"
 
-1388661791 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/continuestatment.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/continuestatment.cpp
 	"continuestatment.h"
 
-1388661778 /home/xkaying/桌面/accelerator/accelerator/context/statments/continuestatment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/continuestatment.h
 	"../statment.h"
 
-1388661604 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/ifstatment.cpp
+1389183401 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/ifstatment.cpp
 	"ifstatment.h"
 
-1388777283 /home/xkaying/桌面/accelerator/accelerator/context/statments/ifstatment.h
+1389183401 /home/xkaying/桌面/accelerator/accelerator/context/statments/ifstatment.h
 	"../statment.h"
 	"../expressions/booleanexpression.h"
 
-1388770014 /home/xkaying/桌面/accelerator/accelerator/context/expressions/booleanexpression.h
+1389182421 /home/xkaying/桌面/accelerator/accelerator/context/expressions/booleanexpression.h
 	"../expression.h"
 
-1388661924 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/returnstatment.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/returnstatment.cpp
 	"returnstatment.h"
 
-1388661956 /home/xkaying/桌面/accelerator/accelerator/context/statments/returnstatment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/returnstatment.h
 	"../statment.h"
 	"../expression.h"
 
-1388595203 source:/home/xkaying/桌面/accelerator/accelerator/context/token.cpp
+1389183202 source:/home/xkaying/桌面/accelerator/accelerator/context/token.cpp
 	"token.h"
 
 1385295831 source:/home/xkaying/桌面/accelerator/accelerator/main.cpp
@@ -643,120 +663,794 @@
 
 1386279389 /home/xkaying/桌面/accelerator/accelerator/manager/packagemanager.h
 
-1388653794 source:/home/xkaying/桌面/accelerator/accelerator/parser/lexer.l
+1389185515 source:/home/xkaying/桌面/accelerator/accelerator/parser/lexer.l
 	<stdio.h>
-	"../context/context.h"
+	"../ast/ast.h"
 	"tokentype.h"
 	"parser.parser.hh"
 
-1388777685 /home/xkaying/桌面/accelerator/accelerator/context/expressiontype.h
+1389004582 /home/xkaying/桌面/accelerator/accelerator/context/expressiontype.h
 
-1388682774 /home/xkaying/桌面/accelerator/accelerator/context/statments/blockstatment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/blockstatment.h
 	"../statment.h"
 	<list>
 
-1388661463 /home/xkaying/桌面/accelerator/accelerator/context/statments/breakstatment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/breakstatment.h
 	"../statment.h"
 
-1388683947 /home/xkaying/桌面/accelerator/accelerator/context/statments/declarestatment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/declarestatment.h
 	"../statment.h"
-	"../classtype.h"
-	"../classobject.h"
-	<list>
+	"../classobjectblock.h"
 
-1388682502 /home/xkaying/桌面/accelerator/accelerator/context/statments/expressionstatment.h
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/expressionstatment.h
 	"../expression.h"
 	"../statment.h"
 
-1388683313 /home/xkaying/桌面/accelerator/accelerator/context/statments/forstatment.h
+1389183401 /home/xkaying/桌面/accelerator/accelerator/context/statments/forstatment.h
 	"../statment.h"
 	"../expression.h"
 
-1388684094 /home/xkaying/桌面/accelerator/accelerator/context/statments/switchstatment.h
+1389183401 /home/xkaying/桌面/accelerator/accelerator/context/statments/switchstatment.h
 	"../statment.h"
 	"../expression.h"
 	<list>
 
-1388683016 /home/xkaying/桌面/accelerator/accelerator/context/statments/whilestatment.h
+1389183401 /home/xkaying/桌面/accelerator/accelerator/context/statments/whilestatment.h
 	"../statment.h"
 	"../expressions/booleanexpression.h"
 
-1388775723 /home/xkaying/桌面/accelerator/accelerator/context/expressions/accessexpression.h
+1389182674 /home/xkaying/桌面/accelerator/accelerator/context/expressions/accessexpression.h
 	"../expression.h"
+	"../literal.h"
+	"../token.h"
+	"../classtype.h"
 
-1388774956 /home/xkaying/桌面/accelerator/accelerator/context/expressions/assignmentexpression.h
+1389182421 /home/xkaying/桌面/accelerator/accelerator/context/expressions/assignmentexpression.h
 	"../expression.h"
 	"../expressiontype.h"
 
-1388733985 /home/xkaying/桌面/accelerator/accelerator/context/expressions/castexpression.h
+1389182421 /home/xkaying/桌面/accelerator/accelerator/context/expressions/castexpression.h
 	"../expression.h"
 	"../classtype.h"
 
-1388770249 /home/xkaying/桌面/accelerator/accelerator/context/expressions/constantexpression.h
+1389182605 /home/xkaying/桌面/accelerator/accelerator/context/expressions/constantexpression.h
 	"../expression.h"
+	"../literal.h"
+	"../classtype.h"
 
-1388775675 /home/xkaying/桌面/accelerator/accelerator/context/expressions/invokeexpression.h
+1389182578 /home/xkaying/桌面/accelerator/accelerator/context/expressions/invokeexpression.h
 	"../expression.h"
+	<list>
 
-1388775800 /home/xkaying/桌面/accelerator/accelerator/context/expressions/newexpression.h
+1389182644 /home/xkaying/桌面/accelerator/accelerator/context/expressions/newexpression.h
 	"../expression.h"
+	"classtype.h"
+	<list>
 
-1388775536 /home/xkaying/桌面/accelerator/accelerator/context/expressions/nifixexpression.h
-	"../expression.h"
-	"../expressiontype.h"
-
-1388775153 /home/xkaying/桌面/accelerator/accelerator/context/expressions/postfixexpression.h
-	"../expression.h"
-	"../expressiontype.h"
-
-1388775285 /home/xkaying/桌面/accelerator/accelerator/context/expressions/prefixexpression.h
+1389182706 /home/xkaying/桌面/accelerator/accelerator/context/expressions/nifixexpression.h
 	"../expression.h"
 	"../expressiontype.h"
 
-1388775736 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/accessexpression.cpp
+1389183080 /home/xkaying/桌面/accelerator/accelerator/context/expressions/postfixexpression.h
+	"../expression.h"
+	"../expressiontype.h"
+
+1389183032 /home/xkaying/桌面/accelerator/accelerator/context/expressions/prefixexpression.h
+	"../expression.h"
+	"../expressiontype.h"
+
+1389182674 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/accessexpression.cpp
 	"accessexpression.h"
 
-1388775008 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/assignmentexpression.cpp
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/assignmentexpression.cpp
 	"assignmentexpression.h"
 
-1388733967 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/castexpression.cpp
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/castexpression.cpp
 	"castexpression.h"
 
-1388770283 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/constantexpression.cpp
+1389182605 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/constantexpression.cpp
 	"constantexpression.h"
 
-1388775812 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/newexpression.cpp
+1389183150 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/newexpression.cpp
 	"newexpression.h"
 
-1388775507 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/nifixexpression.cpp
+1389182704 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/nifixexpression.cpp
 	"nifixexpression.h"
 
-1388775187 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/postfixexpression.cpp
+1389183079 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/postfixexpression.cpp
 	"postfixexpression.h"
 
-1388775314 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/prefixexpression.cpp
+1389183037 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/prefixexpression.cpp
 	"prefixexpression.h"
 
-1388682823 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/blockstatment.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/blockstatment.cpp
 	"blockstatment.h"
 
-1388661443 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/breakstatment.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/breakstatment.cpp
 	"breakstatment.h"
 
-1388683919 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/declarestatment.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/declarestatment.cpp
 	"declarestatment.h"
 
-1388683264 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/forstatment.cpp
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/forstatment.cpp
 	"forstatment.h"
 
-1388684163 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/switchstatment.cpp
+1389183401 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/switchstatment.cpp
 	"switchstatment.h"
 
-1388683106 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/whilestatment.cpp
+1389183401 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/whilestatment.cpp
 	"whilestatment.h"
 
-1388657397 source:/home/xkaying/桌面/accelerator/accelerator/context/template.cpp
+1389182938 source:/home/xkaying/桌面/accelerator/accelerator/context/template.cpp
 	"template.h"
 
-1388817954 /home/xkaying/桌面/accelerator/accelerator/parser/parser.parser.hh
+1389185549 /home/xkaying/桌面/accelerator/accelerator/parser/parser.parser.hh
+
+1389184449 source:/home/xkaying/桌面/accelerator/accelerator/modules/mclass.cpp
+	"mclass.h"
+
+1389184449 /home/xkaying/桌面/accelerator/accelerator/modules/mclass.h
+	"module.h"
+	"mclassobject.h"
+	"mfunction.h"
+	"minterface.h"
+	<string>
+	<list>
+
+1389116254 /home/xkaying/桌面/accelerator/accelerator/modules/module.h
+
+1389184449 /home/xkaying/桌面/accelerator/accelerator/modules/mclassobject.h
+	"module.h"
+	<string>
+
+1389184542 /home/xkaying/桌面/accelerator/accelerator/modules/mfunction.h
+	"module.h"
+	"mblock.h"
+	<string>
+	<list>
+
+1389184380 /home/xkaying/桌面/accelerator/accelerator/modules/minterface.h
+	"module.h"
+	"mtemplate.h"
+	"mfunction.h"
+	<string>
+	<list>
+
+1389184449 /home/xkaying/桌面/accelerator/accelerator/modules/mtemplate.h
+	"mclassobject.h"
+	<list>
+	<string>
+
+1389184585 source:/home/xkaying/桌面/accelerator/accelerator/modules/mexpression.cpp
+	"mexpression.h"
+
+1389184449 /home/xkaying/桌面/accelerator/accelerator/modules/mexpression.h
+	"minstruction.h"
+	"mclassobject.h"
+
+1389174018 /home/xkaying/桌面/accelerator/accelerator/modules/minstruction.h
+
+1388935607 /home/xkaying/桌面/accelerator/accelerator/context/protocoltype.h
+
+1388994103 /home/xkaying/桌面/accelerator/accelerator/context/modifier.h
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/context/classobjectblock.cpp
+	"classobjectblock.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/classobjectblock.h
+	"node.h"
+	"classobject.h"
+	"classtype.h"
+	<list>
+
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/booleanexpression.cpp
+	"booleanexpression.h"
+
+1389182583 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/invokeexpression.cpp
+	"invokeexpression.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/expressionstatment.cpp
+	"expressionstatment.h"
+
+1389184224 source:/home/xkaying/桌面/accelerator/accelerator/modules/mblock.cpp
+	"mblock.h"
+
+1389184449 /home/xkaying/桌面/accelerator/accelerator/modules/mblock.h
+	"mclassobject.h"
+	"mexpression.h"
+	<list>
+
+1389184572 source:/home/xkaying/桌面/accelerator/accelerator/modules/mclassobject.cpp
+	"mclassobject.h"
+
+1389184578 source:/home/xkaying/桌面/accelerator/accelerator/modules/mdelegate.cpp
+	"mdelegate.h"
+
+1389184470 /home/xkaying/桌面/accelerator/accelerator/modules/mdelegate.h
+	"module.h"
+	"mclassobject.h"
+	"mclass.h"
+	<string>
+	<list>
+
+1389184561 source:/home/xkaying/桌面/accelerator/accelerator/modules/menum.cpp
+	"menum.h"
+
+1389184561 /home/xkaying/桌面/accelerator/accelerator/modules/menum.h
+	"module.h"
+	<string>
+	<list>
+
+1389184380 source:/home/xkaying/桌面/accelerator/accelerator/modules/minterface.cpp
+	"minterface.h"
+
+1389184591 source:/home/xkaying/桌面/accelerator/accelerator/modules/mpackage.cpp
+	"mpackage.h"
+
+1389184470 /home/xkaying/桌面/accelerator/accelerator/modules/mpackage.h
+	<string>
+	<list>
+	"module.h"
+	"mclass.h"
+	"menum.h"
+	"minterface.h"
+	"mdelegate.h"
+
+1389174792 source:/home/xkaying/桌面/accelerator/accelerator/modules/mtemplate.cpp
+	"mtemplate.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/delegate.h
+	"node.h"
+	"function.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/context/block.h
+	"node.h"
+	<list>
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/context/statments/casestatment.h
+	"../statment.h"
+	"../expression.h"
+	<list>
+
+1389182421 /home/xkaying/桌面/accelerator/accelerator/context/expressions/arrayexpression.h
+	"../expression.h"
+	<list>
+
+1389182420 /home/xkaying/桌面/accelerator/accelerator/context/expressions/declareexpression.h
+	"../expression.h"
+	"../classobjectblock.h"
+
+1389185527 source:/home/xkaying/桌面/accelerator/accelerator/parser/parser.y
+	"../ast/ast.h"
+	"tokentype.h"
+	<list>
+	<array>
+
+1389182742 source:/home/xkaying/桌面/accelerator/accelerator/context/block.cpp
+	"block.h"
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/context/delegate.cpp
+	"delegate.h"
+
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/arrayexpression.cpp
+	"arrayexpression.h"
+
+1389182420 source:/home/xkaying/桌面/accelerator/accelerator/context/expressions/declareexpression.cpp
+	"declareexpression.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/context/statments/casestatment.cpp
+	"casestatment.h"
+
+1389178560 source:/home/xkaying/桌面/accelerator/accelerator/modules/context.cpp
+	"context.h"
+
+1389180965 /home/xkaying/桌面/accelerator/accelerator/modules/context.h
+	"module.h"
+	<string>
+	<list>
+
+1389184540 source:/home/xkaying/桌面/accelerator/accelerator/modules/mfunction.cpp
+	"mfunction.h"
+	"mclass.h"
+	"mblock.h"
+	"module.h"
+
+1389116304 source:/home/xkaying/桌面/accelerator/accelerator/modules/module.cpp
+	"module.h"
+
+1389178704 /home/xkaying/桌面/accelerator/accelerator/context/ast.h
+	"protocoltype.h"
+	"modifier.h"
+	"node.h"
+	"token.h"
+	"literal.h"
+	"expression.h"
+	"statment.h"
+	"classtype.h"
+	"classobject.h"
+	"function.h"
+	"delegate.h"
+	"class.h"
+	"enum.h"
+	"interface.h"
+	"template.h"
+	"package.h"
+	"block.h"
+	"classobjectblock.h"
+	"statments/blockstatment.h"
+	"statments/breakstatment.h"
+	"statments/continuestatment.h"
+	"statments/declarestatment.h"
+	"statments/expressionstatment.h"
+	"statments/forstatment.h"
+	"statments/ifstatment.h"
+	"statments/returnstatment.h"
+	"statments/switchstatment.h"
+	"statments/whilestatment.h"
+	"statments/casestatment.h"
+	"expressions/accessexpression.h"
+	"expressions/assignmentexpression.h"
+	"expressions/booleanexpression.h"
+	"expressions/castexpression.h"
+	"expressions/constantexpression.h"
+	"expressions/invokeexpression.h"
+	"expressions/newexpression.h"
+	"expressions/nifixexpression.h"
+	"expressions/postfixexpression.h"
+	"expressions/prefixexpression.h"
+	"expressions/arrayexpression.h"
+	"expressions/declareexpression.h"
+
+1389184729 source:/home/xkaying/桌面/accelerator/accelerator/modules/block.cpp
+	"block.h"
+
+1389184734 /home/xkaying/桌面/accelerator/accelerator/modules/block.h
+	"classobject.h"
+	"expression.h"
+	<list>
+
+1389184449 /home/xkaying/桌面/accelerator/accelerator/modules/classobject.h
+	"module.h"
+	<string>
+
+1389184838 /home/xkaying/桌面/accelerator/accelerator/modules/expression.h
+	"instruction.h"
+	"classobject.h"
+
+1389174018 /home/xkaying/桌面/accelerator/accelerator/modules/instruction.h
+
+1389184740 source:/home/xkaying/桌面/accelerator/accelerator/modules/class.cpp
+	"class.h"
+
+1389184747 /home/xkaying/桌面/accelerator/accelerator/modules/class.h
+	"module.h"
+	"classobject.h"
+	"function.h"
+	"interface.h"
+	<string>
+	<list>
+
+1389184838 /home/xkaying/桌面/accelerator/accelerator/modules/function.h
+	"module.h"
+	"block.h"
+	<string>
+	<list>
+
+1389184838 /home/xkaying/桌面/accelerator/accelerator/modules/interface.h
+	"module.h"
+	"template.h"
+	"function.h"
+	<string>
+	<list>
+
+1389184838 /home/xkaying/桌面/accelerator/accelerator/modules/template.h
+	"classobject.h"
+	<list>
+	<string>
+
+1389184754 source:/home/xkaying/桌面/accelerator/accelerator/modules/classobject.cpp
+	"classobject.h"
+
+1389182742 source:/home/xkaying/桌面/accelerator/accelerator/ast/block.cpp
+	"block.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/block.h
+	"node.h"
+	<list>
+
+1389182823 /home/xkaying/桌面/accelerator/accelerator/ast/node.h
+	"nodetype.h"
+	"protocoltype.h"
+	"modifier.h"
+	<list>
+
+1389180475 /home/xkaying/桌面/accelerator/accelerator/ast/nodetype.h
+
+1388935607 /home/xkaying/桌面/accelerator/accelerator/ast/protocoltype.h
+
+1388994103 /home/xkaying/桌面/accelerator/accelerator/ast/modifier.h
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/class.cpp
+	"class.h"
+
+1389182823 /home/xkaying/桌面/accelerator/accelerator/ast/class.h
+	"node.h"
+	"token.h"
+	"template.h"
+	"classtype.h"
+	<list>
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/token.h
+	"node.h"
+	"../parser/tokentype.h"
+	<string>
+
+1389182823 /home/xkaying/桌面/accelerator/accelerator/ast/template.h
+	"node.h"
+	"classobject.h"
+	<list>
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/classobject.h
+	"node.h"
+	"classtype.h"
+	"expression.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/classtype.h
+	"token.h"
+	"expression.h"
+	<list>
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/expression.h
+	"node.h"
+	"expressiontype.h"
+
+1389004582 /home/xkaying/桌面/accelerator/accelerator/ast/expressiontype.h
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/classobject.cpp
+	"classobject.h"
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/classobjectblock.cpp
+	"classobjectblock.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/classobjectblock.h
+	"node.h"
+	"classobject.h"
+	"classtype.h"
+	<list>
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/classtype.cpp
+	"classtype.h"
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/delegate.cpp
+	"delegate.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/delegate.h
+	"node.h"
+	"function.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/function.h
+	"node.h"
+	"token.h"
+	"classtype.h"
+	"modifier.h"
+	"expressiontype.h"
+	"statment.h"
+	"classobject.h"
+	<list>
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statment.h
+	"node.h"
+	"statmenttype.h"
+
+1388996428 /home/xkaying/桌面/accelerator/accelerator/ast/statmenttype.h
+
+1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/enum.cpp
+	"enum.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/enum.h
+	"token.h"
+	"classobject.h"
+	"classtype.h"
+	"protocoltype.h"
+	<list>
+
+1389183141 source:/home/xkaying/桌面/accelerator/accelerator/ast/expression.cpp
+	"expression.h"
+
+1389182674 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/accessexpression.cpp
+	"accessexpression.h"
+
+1389182674 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/accessexpression.h
+	"../expression.h"
+	"../literal.h"
+	"../token.h"
+	"../classtype.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/literal.h
+	"token.h"
+	"literaltype.h"
+
+1389001207 /home/xkaying/桌面/accelerator/accelerator/ast/literaltype.h
+
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/arrayexpression.cpp
+	"arrayexpression.h"
+
+1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/arrayexpression.h
+	"../expression.h"
+	<list>
+
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/assignmentexpression.cpp
+	"assignmentexpression.h"
+
+1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/assignmentexpression.h
+	"../expression.h"
+	"../expressiontype.h"
+
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/booleanexpression.cpp
+	"booleanexpression.h"
+
+1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/booleanexpression.h
+	"../expression.h"
+
+1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/castexpression.cpp
+	"castexpression.h"
+
+1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/castexpression.h
+	"../expression.h"
+	"../classtype.h"
+
+1389182605 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/constantexpression.cpp
+	"constantexpression.h"
+
+1389182605 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/constantexpression.h
+	"../expression.h"
+	"../literal.h"
+	"../classtype.h"
+
+1389182420 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/declareexpression.cpp
+	"declareexpression.h"
+
+1389182420 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/declareexpression.h
+	"../expression.h"
+	"../classobjectblock.h"
+
+1389182583 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/invokeexpression.cpp
+	"invokeexpression.h"
+
+1389182578 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/invokeexpression.h
+	"../expression.h"
+	<list>
+
+1389183150 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/newexpression.cpp
+	"newexpression.h"
+
+1389182644 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/newexpression.h
+	"../expression.h"
+	"classtype.h"
+	<list>
+
+1389182704 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/nifixexpression.cpp
+	"nifixexpression.h"
+
+1389182706 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/nifixexpression.h
+	"../expression.h"
+	"../expressiontype.h"
+
+1389183079 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/postfixexpression.cpp
+	"postfixexpression.h"
+
+1389183080 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/postfixexpression.h
+	"../expression.h"
+	"../expressiontype.h"
+
+1389183037 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/prefixexpression.cpp
+	"prefixexpression.h"
+
+1389183032 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/prefixexpression.h
+	"../expression.h"
+	"../expressiontype.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/function.cpp
+	"function.h"
+
+1389183169 source:/home/xkaying/桌面/accelerator/accelerator/ast/interface.cpp
+	"interface.h"
+
+1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/interface.h
+	"node.h"
+	"template.h"
+	"token.h"
+	"classtype.h"
+	"function.h"
+	<list>
+
+1389183175 source:/home/xkaying/桌面/accelerator/accelerator/ast/literal.cpp
+	"literal.h"
+
+1389183182 source:/home/xkaying/桌面/accelerator/accelerator/ast/node.cpp
+	"node.h"
+
+1389185543 source:/home/xkaying/桌面/accelerator/accelerator/ast/package.cpp
+	"package.h"
+	"../modules/package.h"
+
+1389183111 /home/xkaying/桌面/accelerator/accelerator/ast/package.h
+	"node.h"
+	"token.h"
+	"protocoltype.h"
+	<list>
+
+1389184838 /home/xkaying/桌面/accelerator/accelerator/modules/package.h
+	<string>
+	<list>
+	"module.h"
+	"class.h"
+	"enum.h"
+	"interface.h"
+	"delegate.h"
+
+1389184561 /home/xkaying/桌面/accelerator/accelerator/modules/enum.h
+	"module.h"
+	<string>
+	<list>
+
+1389184846 /home/xkaying/桌面/accelerator/accelerator/modules/delegate.h
+	"module.h"
+	"classobject.h"
+	"class.h"
+	<string>
+	<list>
+
+1389183408 source:/home/xkaying/桌面/accelerator/accelerator/ast/statment.cpp
+	"statment.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/blockstatment.cpp
+	"blockstatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/blockstatment.h
+	"../statment.h"
+	<list>
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/breakstatment.cpp
+	"breakstatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/breakstatment.h
+	"../statment.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/casestatment.cpp
+	"casestatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/casestatment.h
+	"../statment.h"
+	"../expression.h"
+	<list>
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/continuestatment.cpp
+	"continuestatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/continuestatment.h
+	"../statment.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/declarestatment.cpp
+	"declarestatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/declarestatment.h
+	"../statment.h"
+	"../classobjectblock.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/expressionstatment.cpp
+	"expressionstatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/expressionstatment.h
+	"../expression.h"
+	"../statment.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/forstatment.cpp
+	"forstatment.h"
+
+1389183401 /home/xkaying/桌面/accelerator/accelerator/ast/statments/forstatment.h
+	"../statment.h"
+	"../expression.h"
+
+1389183401 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/ifstatment.cpp
+	"ifstatment.h"
+
+1389183401 /home/xkaying/桌面/accelerator/accelerator/ast/statments/ifstatment.h
+	"../statment.h"
+	"../expressions/booleanexpression.h"
+
+1389183400 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/returnstatment.cpp
+	"returnstatment.h"
+
+1389183400 /home/xkaying/桌面/accelerator/accelerator/ast/statments/returnstatment.h
+	"../statment.h"
+	"../expression.h"
+
+1389183401 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/switchstatment.cpp
+	"switchstatment.h"
+
+1389183401 /home/xkaying/桌面/accelerator/accelerator/ast/statments/switchstatment.h
+	"../statment.h"
+	"../expression.h"
+	<list>
+
+1389183401 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/whilestatment.cpp
+	"whilestatment.h"
+
+1389183401 /home/xkaying/桌面/accelerator/accelerator/ast/statments/whilestatment.h
+	"../statment.h"
+	"../expressions/booleanexpression.h"
+
+1389182938 source:/home/xkaying/桌面/accelerator/accelerator/ast/template.cpp
+	"template.h"
+
+1389183202 source:/home/xkaying/桌面/accelerator/accelerator/ast/token.cpp
+	"token.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/delegate.cpp
+	"delegate.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/enum.cpp
+	"enum.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/expression.cpp
+	"expression.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/function.cpp
+	"function.h"
+	"class.h"
+	"block.h"
+	"module.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/interface.cpp
+	"interface.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/package.cpp
+	"package.h"
+
+1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/template.cpp
+	"template.h"
+
+1389178704 /home/xkaying/桌面/accelerator/accelerator/ast/ast.h
+	"protocoltype.h"
+	"modifier.h"
+	"node.h"
+	"token.h"
+	"literal.h"
+	"expression.h"
+	"statment.h"
+	"classtype.h"
+	"classobject.h"
+	"function.h"
+	"delegate.h"
+	"class.h"
+	"enum.h"
+	"interface.h"
+	"template.h"
+	"package.h"
+	"block.h"
+	"classobjectblock.h"
+	"statments/blockstatment.h"
+	"statments/breakstatment.h"
+	"statments/continuestatment.h"
+	"statments/declarestatment.h"
+	"statments/expressionstatment.h"
+	"statments/forstatment.h"
+	"statments/ifstatment.h"
+	"statments/returnstatment.h"
+	"statments/switchstatment.h"
+	"statments/whilestatment.h"
+	"statments/casestatment.h"
+	"expressions/accessexpression.h"
+	"expressions/assignmentexpression.h"
+	"expressions/booleanexpression.h"
+	"expressions/castexpression.h"
+	"expressions/constantexpression.h"
+	"expressions/invokeexpression.h"
+	"expressions/newexpression.h"
+	"expressions/nifixexpression.h"
+	"expressions/postfixexpression.h"
+	"expressions/prefixexpression.h"
+	"expressions/arrayexpression.h"
+	"expressions/declareexpression.h"
 

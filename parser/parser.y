@@ -1,6 +1,6 @@
 %{
   extern int yylineno;
-  #include "../context/context.h"
+  #include "../ast/ast.h"
   #include "tokentype.h"
   #include <list>
   #include <array>
@@ -31,36 +31,36 @@
 %token TokenOpt_LeftBracket TokenOpt_RightBracket TokenOpt_LeftBlock TokenOpt_RightBlock TokenOpt_LeftIndex TokenOpt_RightIndex
 
 %union {
-    Package *package;
-    Enum *pEnum;
-    Template *pTemplate;
-    Literal *literal;
-    std::list<Expression*> *expressionList;
-    std::list<ClassObject*> *objectList;
-    std::list<Token*> *tokenList;
-    std::list<Package*> *packageList;
-    std::list<Node*> *nodeList;
-    std::list<Function*> *functionList;
-    std::list<ClassType*> *typeList;
-    std::list<Statment*> *statmentList;
-    Expression *expression;
-    Statment *statment;
-    Token *token;
-    ClassType *type;
-    ClassObject *object;
-    ClassObjectBlock *objectBlock;
-     Class *pClass;
-     Interface *interface;
-     Delegate *delegate;
-    Node *node;
-    Function *function;
-    Node* *pArray;
+    ASTPackage *package;
+    ASTEnum *pEnum;
+    ASTTemplate *pTemplate;
+    ASTLiteral *literal;
+    std::list<ASTExpression*> *expressionList;
+    std::list<ASTClassObject*> *objectList;
+    std::list<ASTToken*> *tokenList;
+    std::list<ASTPackage*> *packageList;
+    std::list<ASTNode*> *nodeList;
+    std::list<ASTFunction*> *functionList;
+    std::list<ASTClassType*> *typeList;
+    std::list<ASTStatment*> *statmentList;
+    ASTExpression *expression;
+    ASTStatment *statment;
+    ASTToken *token;
+    ASTClassType *type;
+    ASTClassObject *object;
+    ASTClassObjectBlock *objectBlock;
+     ASTClass *pClass;
+     ASTInterface *interface;
+     ASTDelegate *delegate;
+    ASTNode *node;
+    ASTFunction *function;
+    ASTNode* *pArray;
      Protocol protocol;
      TokenType tokentype;
      Modifier modifiertype;
      ExpressionOverrideOperator override_operator;
      ExpressionAssignmentOperator assign_operator;
-     CaseStatment *casestatment;
+     ASTCaseStatment *casestatment;
 }
 %type <override_operator> operator_override
 %type <assign_operator> assignment_operator
@@ -188,7 +188,7 @@ modifier
 
 /******************************* 递归标识符 a.b.c.d这种 ******************************************/
 qualified_identifier
-  : Token_Identify {$$=new list<Token*>(); $$->push_back($1);}
+  : Token_Identify {$$=new list<ASTToken*>(); $$->push_back($1);}
   | qualified_identifier TokenOpt_Dot Token_Identify {$1->push_back($3);}
   ;
 
@@ -201,7 +201,7 @@ comma_opt
 /*****************************************************************包定义*****************************************************************************/
 package_declaration
   : protocol_opt TokenKey_Package package_name package_body comma_opt
-	 {$$=new Package($1,$3); $$->setContent($4);}
+	 {$$=new ASTPackage($1,$3); $$->setContent($4);}
   ;
 package_name
   : qualified_identifier { $$=$1;}
@@ -210,18 +210,18 @@ package_name
 /*包的主体,包括import 成员定义 */
 package_body
   : TokenOpt_LeftBlock import_directives_opt package_member_declarations_opt TokenOpt_RightBlock
-         { $$=new list<Node*>(); $$->merge(*$2);$$->merge(*$3); delete $2; delete $3;}
+         { $$=new list<ASTNode*>(); $$->merge(*$2);$$->merge(*$3); delete $2; delete $3;}
   ;
 import_directives_opt
   : /* 空 */{$$=nullptr;}
   | import_directives {$$=$1;}
   ;
 import_directives
-  : import_directive {$$=new list<Node*>(); $$->push_back($1);}
+  : import_directive {$$=new list<ASTNode*>(); $$->push_back($1);}
   | import_directives import_directive {$1->push_back($2);}
   ;
 import_directive
-  : TokenKey_Import package_name TokenOpt_End  {$$=new Package(Protocol_Protected,$2);}
+  : TokenKey_Import package_name TokenOpt_End  {$$=new ASTPackage(Protocol_Protected,$2);}
   ;
 
 package_member_declarations_opt
@@ -230,7 +230,7 @@ package_member_declarations_opt
   ;
 
 package_member_declarations
-  : package_member_declaration   {$$=new list<Node*>(); $$->push_back($1);}
+  : package_member_declaration   {$$=new list<ASTNode*>(); $$->push_back($1);}
   | package_member_declarations package_member_declaration {$1->push_back($2);}
   ;
 package_member_declaration
@@ -250,7 +250,7 @@ package_templatetype_declaration
 
 enum_declaration
   : TokenKey_Enum enum_super_opt Token_Identify enum_extend_opt enum_body comma_opt
-  {$$=new Enum($2,$3,$4);$$->setContent($5);}
+  {$$=new ASTEnum($2,$3,$4);$$->setContent($5);}
   ;
 enum_super_opt
   : {$$=nullptr;}
@@ -271,12 +271,12 @@ enum_member_declarations_opt
   | enum_member_declarations {$$=$1;}
   ;
 enum_member_declarations
-  : enum_member_declaration {$$=new list<ClassObject*>(); $$->push_back($1);}
+  : enum_member_declaration {$$=new list<ASTClassObject*>(); $$->push_back($1);}
   | enum_member_declarations TokenOpt_Comma enum_member_declaration {$1->push_back($3);}
   ;
 enum_member_declaration
-  : Token_Identify {$$=new ClassObject(nullptr,$1,nullptr);}
-  | Token_Identify TokenOpt_SetValue constant_expression {$$=new ClassObject(nullptr,$1,$3);}
+  : Token_Identify {$$=new ASTClassObject(nullptr,$1,nullptr);}
+  | Token_Identify TokenOpt_SetValue constant_expression {$$=new ASTClassObject(nullptr,$1,$3);}
   ;
 
 /********************************************************************模板************************************************/
@@ -288,7 +288,7 @@ template_opt
 
 template_declaration
   : TokenKey_Template TokenOpt_Less template_body_opt TokenOpt_More
-  { $$=new Template(); $$->setContent($3);}
+  { $$=new ASTTemplate(); $$->setContent($3);}
   ;
 
 template_body_opt
@@ -299,11 +299,11 @@ template_body
   : template_params {$$=$1;}
   ;
 template_params
-  : template_param  {$$=new list<ClassObject*>(); $$->push_back($1); }
+  : template_param  {$$=new list<ASTClassObject*>(); $$->push_back($1); }
   |  template_params TokenOpt_Comma template_param {$1->push_back($3);}
   ;
 template_param
-  : class_type Token_Identify template_param_argument_opt{ $$=new ClassObject($1,$2,$3);}
+  : class_type Token_Identify template_param_argument_opt{ $$=new ASTClassObject($1,$2,$3);}
   ;
 template_param_argument_opt
    : {$$=nullptr;}
@@ -319,7 +319,7 @@ template_argument_list_opt
   | template_argument_list {$$=$1;}
   ;
 template_argument_list
-  : template_argument {$$=new list<Expression*>(); $$->push_back($1);}
+  : template_argument {$$=new list<ASTExpression*>(); $$->push_back($1);}
   | template_argument_list TokenOpt_Comma template_argument {$1->push_back($3);}
   ;
 template_argument
@@ -328,13 +328,13 @@ template_argument
 
 /********************************************************************** 委托定义语法 ********************************************************/
 delegate_declaration
-   : TokenKey_Delegate function_header function_empty_body {$$=new Delegate($2);}
+   : TokenKey_Delegate function_header function_empty_body {$$=new ASTDelegate($2);}
    ;
 
 /**************************************************************** 接口定义语法 *****************************************************/
 interface_declaration
   : TokenKey_Interface Token_Identify interface_extend_opt interface_body comma_opt
-  { $$=new Interface($2,$3); $$->setContent($4);}
+  { $$=new ASTInterface($2,$3); $$->setContent($4);}
   ;
 interface_extend_opt
   :  {$$=nullptr;}
@@ -344,7 +344,7 @@ interface_extend
   :  TokenOpt_As interface_type_list {$$=$2;}
   ;
 interface_type_list
-  : class_type {$$=new list<ClassType*>(); $$->push_back($1);}
+  : class_type {$$=new list<ASTClassType*>(); $$->push_back($1);}
   | interface_type_list TokenOpt_Comma class_type {$1->push_back($3);}
   ;
 interface_body
@@ -355,7 +355,7 @@ interface_member_declarations_opt
   | interface_member_declarations {$$=$1;}
   ;
 interface_member_declarations
-  : interface_member_declaration {$$=new list<Function*>(); $$->push_back($1);}
+  : interface_member_declaration {$$=new list<ASTFunction*>(); $$->push_back($1);}
   | interface_member_declarations interface_member_declaration {$1->push_back($2);}
   ;
 interface_member_declaration
@@ -365,7 +365,7 @@ interface_member_declaration
 /*************************************************** 类定义表达式 ********************************************8*****/
 class_declaration
   : TokenKey_Class class_super_opt Token_Identify class_extend_opt class_body comma_opt
-    {$$=new Class($2,$3,$4); $$->setContent($5);}
+    {$$=new ASTClass($2,$3,$4); $$->setContent($5);}
   ;
 class_super_opt
   : {$$=nullptr;}
@@ -385,7 +385,7 @@ class_member_declarations_opt
   | class_member_declarations {$$=$1;}
   ;
 class_member_declarations
-  : class_member_declaration {$$=new list<Node*>(); $$->push_back($1);}
+  : class_member_declaration {$$=new list<ASTNode*>(); $$->push_back($1);}
   | class_member_declarations class_member_declaration {$1->push_back($2);}
   ;
 /*类型定义 函数定义 和块定义*/
@@ -394,11 +394,11 @@ class_member_declarations
   ;
   class_protocol_member
   : modifiers_opt class_modifiers_declaration {$2->setModifiers($1);$$=$2;}
-  | class_body {$$=new Block($1);}
+  | class_body {$$=new ASTBlock($1);}
   ;
 class_modifiers_declaration
   : function_declaration { $$=$1;}
-  | class_type variable_declarators TokenOpt_End {$$=new ClassObjectBlock($1,$2);}
+  | class_type variable_declarators TokenOpt_End {$$=new ASTClassObjectBlock($1,$2);}
   ;
 
 /***********************************************************函数定义******************************************************/
@@ -407,9 +407,9 @@ function_declaration
   ;
 function_header
   : type function_modifier_opt Token_Identify TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
-    {$$=new Function($1,$3); $$->setFunctionModifier($2); $$->setParams($5);}
+    {$$=new ASTFunction($1,$3); $$->setFunctionModifier($2); $$->setParams($5);}
   | type TokenKey_Operator operator_override TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
-    {$$=new Function($1,$3); $$->setParams($5);}
+    {$$=new ASTFunction($1,$3); $$->setParams($5);}
   ;
 function_modifier_opt
   : {$$=Modifier_None;}
@@ -429,12 +429,12 @@ function_body
 
 function_parameter_list
   :  {$$=nullptr;}
-  | function_parameter {$$=new list<ClassObject*>();$$->push_back($1);}
+  | function_parameter {$$=new list<ASTClassObject*>();$$->push_back($1);}
   | function_parameter_list TokenOpt_Comma function_parameter {$1->push_back($3);}
   ;
 
 function_parameter
-  : class_type Token_Identify function_parameter_argument_opt {$$=new ClassObject($1,$2,$3);}
+  : class_type Token_Identify function_parameter_argument_opt {$$=new ASTClassObject($1,$2,$3);}
   ;
 function_parameter_argument_opt
   : {$$=nullptr;}
@@ -454,22 +454,22 @@ statement
 /*定义语句********************************************************/
 declaration_statement
   : modifiers_opt local_variable_declaration TokenOpt_End
-  { $2->setModifiers($1); $$=new DeclareStatment($2);}
+  { $2->setModifiers($1); $$=new ASTDeclareStatment($2);}
   ;
 local_variable_declaration
-  :  class_type variable_declarators {$$=new ClassObjectBlock($1,$2);}
+  :  class_type variable_declarators {$$=new ASTClassObjectBlock($1,$2);}
   ;
 variable_declarators
-  : variable_declarator {$$=new list<ClassObject*>(); $$->push_back($1);}
+  : variable_declarator {$$=new list<ASTClassObject*>(); $$->push_back($1);}
   | variable_declarators TokenOpt_Comma variable_declarator {$1->push_back($3);}
   ;
 variable_declarator
-  : Token_Identify {$$=new ClassObject(nullptr,$1,nullptr);}
-  | Token_Identify TokenOpt_SetValue variable_initializer {$$=new ClassObject(nullptr,$1,$3);}
+  : Token_Identify {$$=new ASTClassObject(nullptr,$1,nullptr);}
+  | Token_Identify TokenOpt_SetValue variable_initializer {$$=new ASTClassObject(nullptr,$1,$3);}
   ;
 variable_initializer
   : expression %prec lower_than_rightbracket {$$=$1;}
-  | array_initializer {$$=new ArrayExpression($1);}
+  | array_initializer {$$=new ASTArrayExpression($1);}
   ;
 array_initializer
   : TokenOpt_LeftBracket variable_initializer_list_opt TokenOpt_RightBracket {$$=$2;}
@@ -480,7 +480,7 @@ variable_initializer_list_opt
   | variable_initializer_list {$$=$1;}
   ;
 variable_initializer_list
-  : variable_initializer {$$=new list<Expression*>();$$->push_back($1);}
+  : variable_initializer {$$=new list<ASTExpression*>();$$->push_back($1);}
   | variable_initializer_list TokenOpt_Comma variable_initializer {$1->push_back($3);}
   ;
 /*集合语句****************************************************************/
@@ -494,14 +494,14 @@ embedded_statement
   ;
 /*块语句*/
 block_statment
-  : TokenOpt_LeftBlock statement_list_opt TokenOpt_RightBlock {$$=new BlockStatment($2);}
+  : TokenOpt_LeftBlock statement_list_opt TokenOpt_RightBlock {$$=new ASTBlockStatment($2);}
   ;
 statement_list_opt
   : {$$=nullptr;}
   | statement_list {$$=$1;}
   ;
 statement_list
-  : statement {$$=new list<Statment*>(); $$->push_back($1);}
+  : statement {$$=new list<ASTStatment*>(); $$->push_back($1);}
   | statement_list statement {$1->push_back($2);}
   ;
 /*空语句*/
@@ -511,7 +511,7 @@ empty_statement
 
 /*表达式语句,详见表达式部分 */
 expression_statement
-  : statement_expression TokenOpt_End {$$=new ExpressionStatment($1);}
+  : statement_expression TokenOpt_End {$$=new ASTExpressionStatment($1);}
   ;
 
 statement_expression
@@ -528,13 +528,13 @@ selection_statement
   ;
 if_statement
   : TokenKey_If TokenOpt_LeftBracket boolean_expression TokenOpt_RightBracket embedded_statement  %prec lower_than_else
-    {$$=new IfStatment($3,$5);}
+    {$$=new ASTIfStatment($3,$5);}
   | TokenKey_If TokenOpt_LeftBracket boolean_expression TokenOpt_RightBracket embedded_statement TokenKey_Else embedded_statement
-    {$$=new IfStatment($3,$5,$7);}
+    {$$=new ASTIfStatment($3,$5,$7);}
   ;
 switch_statement
   : TokenKey_Switch TokenOpt_LeftBracket expression TokenOpt_RightBracket switch_block
-  {$$=new SwitchStatment($3,$5);}
+  {$$=new ASTSwitchStatment($3,$5);}
   ;
 switch_block
   : TokenOpt_LeftBlock switch_sections_opt TokenOpt_RightBlock {$$=$2;}
@@ -544,7 +544,7 @@ switch_sections_opt
   | switch_sections {$$=$1;}
   ;
 switch_sections
-  : switch_section {$$=new list<Statment*>(); $$->push_back($1);}
+  : switch_section {$$=new list<ASTStatment*>(); $$->push_back($1);}
   | switch_sections switch_section {$1->push_back($2);}
   ;
 switch_section
@@ -555,8 +555,8 @@ switch_labels
   | switch_labels switch_label {$1->pushCases($2);}
   ;
 switch_label
-  : TokenKey_Case constant_expression TokenOpt_As {$$=new CaseStatment($2);}
-  | TokenKey_Default TokenOpt_As {$$=new CaseStatment(nullptr);}
+  : TokenKey_Case constant_expression TokenOpt_As {$$=new ASTCaseStatment($2);}
+  | TokenKey_Default TokenOpt_As {$$=new ASTCaseStatment(nullptr);}
   ;
 
 /*循环语句*/
@@ -567,21 +567,21 @@ iteration_statement
 
 while_statement
   : TokenKey_While TokenOpt_LeftBracket boolean_expression TokenOpt_RightBracket embedded_statement
-  {$$=new WhileStatment($3,$5);}
+  {$$=new ASTWhileStatment($3,$5);}
   ;
 
 for_statement
   : TokenKey_For TokenOpt_LeftBracket for_expression TokenOpt_RightBracket embedded_statement
-     {$$=new ForStatment($3,$5);}
+     {$$=new ASTForStatment($3,$5);}
   ;
 
 for_expression
-  : for_initializer TokenOpt_As for_iterator  {$$=new NifixExpression(ENO_As,$1,$3);}
-  | for_initializer TokenOpt_To for_iterator  {$$=new NifixExpression(ENO_To,$1,$3);}
+  : for_initializer TokenOpt_As for_iterator  {$$=new ASTNifixExpression(ENO_As,$1,$3);}
+  | for_initializer TokenOpt_To for_iterator  {$$=new ASTNifixExpression(ENO_To,$1,$3);}
   ;
 
 for_initializer
-  : local_variable_declaration {$$=new DeclareExpression($1);}
+  : local_variable_declaration {$$=new ASTDeclareExpression($1);}
   | variable_reference {$$=$1;}
   ;
 
@@ -596,20 +596,20 @@ jump_statement
   | return_statement {$$=$1;}
   ;
 break_statement
-  : TokenKey_Break TokenOpt_End {$$=new BreakStatment();}
+  : TokenKey_Break TokenOpt_End {$$=new ASTBreakStatment();}
   ;
 continue_statement
-  : TokenKey_Continue TokenOpt_End {$$=new ContinueStatment();}
+  : TokenKey_Continue TokenOpt_End {$$=new ASTContinueStatment();}
   ;
 
 return_statement
-  : TokenKey_Return expression_opt TokenOpt_End {$$=new ReturnStatment($2);}
+  : TokenKey_Return expression_opt TokenOpt_End {$$=new ASTReturnStatment($2);}
   ;
 
 /******************************************表达式语法***********************************************************/
 /*表达式列表*/
 expression_list
-  : expression {$$=new list<Expression*>();$$->push_back($1);}
+  : expression {$$=new list<ASTExpression*>();$$->push_back($1);}
   | expression_list TokenOpt_Comma expression {$1->push_back($3);}
   ;
 
@@ -625,7 +625,7 @@ primary_expression
   ;
 /* 无括号的主表达式 包括 常量 数组创建表达式 成员访问 函数调用表达式 数组元素访问 this指针 super访问,和new表达式*/
 primary_expression_no_parenthesis
-  : literal {$$=new AccessExpression($1);}
+  : literal {$$=new ASTAccessExpression($1);}
   | member_access {$$=$1;}
   | invocation_expression {$$=$1;}
   | element_access {$$=$1;}
@@ -635,16 +635,17 @@ primary_expression_no_parenthesis
   ;
 /*括号匹配表达式*/
 parenthesized_expression
-  : TokenOpt_LeftBracket expression TokenOpt_RightBracket {$$=new PostfixExpression(EPostO_Bracket,$2);}
+  : TokenOpt_LeftBracket expression TokenOpt_RightBracket {$$=new ASTPostfixExpression(EPostO_Bracket,$2);}
   ;
 /*成员访问*/
 member_access
-  : primary_expression TokenOpt_Dot Token_Identify {$$=new AccessExpression($1,$3);}
-  | class_type TokenOpt_Dot Token_Identify  {$$=new AccessExpression($1,$3);}
+  : primary_expression TokenOpt_Dot Token_Identify {$$=new ASTAccessExpression($1,$3);}
+  | class_type TokenOpt_Dot Token_Identify  {$$=new ASTAccessExpression($1,$3);}
   ;
 /*函数调用表达式*/
 invocation_expression
-  : primary_expression_no_parenthesis TokenOpt_LeftBracket argument_list_opt TokenOpt_RightBracket {$$=new InvokeExpression($1,$3);}
+  : primary_expression_no_parenthesis TokenOpt_LeftBracket argument_list_opt TokenOpt_RightBracket
+  {$$=new ASTInvokeExpression($1,$3);}
   ;
 /*参数列表*/
 argument_list_opt
@@ -653,17 +654,18 @@ argument_list_opt
   ;
 /* 数组元素的访问 */
 element_access
-  : primary_expression TokenOpt_LeftIndex expression_list TokenOpt_RightIndex {$$=new AccessExpression($1,$3);}
+  : primary_expression TokenOpt_LeftIndex expression_list TokenOpt_RightIndex
+  {$$=new ASTAccessExpression($1,$3);}
   ;
 
 
 /*this指针访问*/
 this_access
-  : TokenKey_This {$$=new AccessExpression(new Literal(ThisLiteral,nullptr));}
+  : TokenKey_This {$$=new ASTAccessExpression(new ASTLiteral(ThisLiteral,nullptr));}
   ;
 /*super指针访问*/
 super_access
-  : TokenKey_Super {$$=new AccessExpression(new Literal(SuperLiteral,nullptr));}
+  : TokenKey_Super {$$=new ASTAccessExpression(new ASTLiteral(SuperLiteral,nullptr));}
   ;
 
 /*new表达式*/
@@ -671,7 +673,8 @@ new_expression
   : object_creation_expression {$$=$1;}
   ;
 object_creation_expression
-  : TokenKey_New class_type TokenOpt_LeftBracket argument_list_opt TokenOpt_RightBracket {$$=new NewExpression($2,$4);}
+  : TokenKey_New class_type TokenOpt_LeftBracket argument_list_opt TokenOpt_RightBracket
+  {$$=new ASTNewExpression($2,$4);}
   ;
 
 
@@ -685,85 +688,86 @@ postfix_expression
 
 /*后缀++ --*/
 post_increment_expression
-  : postfix_expression TokenOpt_Inc {$$=new PostfixExpression(EPostO_Inc,$1);}
+  : postfix_expression TokenOpt_Inc {$$=new ASTPostfixExpression(EPostO_Inc,$1);}
   ;
 post_decrement_expression
-  : postfix_expression TokenOpt_Dec {$$=new PostfixExpression(EPostO_Dec,$1);}
+  : postfix_expression TokenOpt_Dec {$$=new ASTPostfixExpression(EPostO_Dec,$1);}
   ;
 
 unary_expression_not_plusminus
   : postfix_expression {$$=$1;}
-  | TokenOpt_Not unary_expression {$$=new PrefixExpression(EPreO_Not,$2);}
-  | TokenOpt_BitNot unary_expression {$$=new PrefixExpression(EPreO_BitNot,$2);}
+  | TokenOpt_Not unary_expression {$$=new ASTPrefixExpression(EPreO_Not,$2);}
+  | TokenOpt_BitNot unary_expression {$$=new ASTPrefixExpression(EPreO_BitNot,$2);}
   | cast_expression {$$=$1;}
   ;
 unary_expression
   : unary_expression_not_plusminus {$$=$1;}
-  | TokenOpt_Add unary_expression {$$=new PrefixExpression(EPreO_Plus,$2);}
-  | TokenOpt_Sub unary_expression {$$=new PrefixExpression(EPreO_Minus,$2);}
+  | TokenOpt_Add unary_expression {$$=new ASTPrefixExpression(EPreO_Plus,$2);}
+  | TokenOpt_Sub unary_expression {$$=new ASTPrefixExpression(EPreO_Minus,$2);}
   ;
 /* 类型转换 */
 cast_expression
-  : TokenOpt_LeftBracket class_type TokenOpt_RightBracket unary_expression {$$=new CastExpression($2,$4);}
+  : TokenOpt_LeftBracket class_type TokenOpt_RightBracket unary_expression
+  {$$=new ASTCastExpression($2,$4);}
   ;
 
 /*多项表达式*/
 multiplicative_expression
   : unary_expression {$$=$1;}
-  | multiplicative_expression TokenOpt_Mul unary_expression {$$=new NifixExpression(ENO_Mul,$1,$3);}
-  | multiplicative_expression TokenOpt_Div unary_expression {$$=new NifixExpression(ENO_Div,$1,$3);}
-  | multiplicative_expression TokenOpt_Mod unary_expression {$$=new NifixExpression(ENO_Mod,$1,$3);}
+  | multiplicative_expression TokenOpt_Mul unary_expression {$$=new ASTNifixExpression(ENO_Mul,$1,$3);}
+  | multiplicative_expression TokenOpt_Div unary_expression {$$=new ASTNifixExpression(ENO_Div,$1,$3);}
+  | multiplicative_expression TokenOpt_Mod unary_expression {$$=new ASTNifixExpression(ENO_Mod,$1,$3);}
   ;
 
 additive_expression
   : multiplicative_expression {$$=$1;}
-  | additive_expression TokenOpt_Add multiplicative_expression {$$=new NifixExpression(ENO_Add,$1,$3);}
-  | additive_expression TokenOpt_Sub multiplicative_expression {$$=new NifixExpression(ENO_Sub,$1,$3);}
+  | additive_expression TokenOpt_Add multiplicative_expression {$$=new ASTNifixExpression(ENO_Add,$1,$3);}
+  | additive_expression TokenOpt_Sub multiplicative_expression {$$=new ASTNifixExpression(ENO_Sub,$1,$3);}
   ;
 shift_expression
   : additive_expression {$$=$1;}
-  | shift_expression TokenOpt_ShiftLeft additive_expression {$$=new NifixExpression(ENO_ShiftLeft,$1,$3);}
-  | shift_expression TokenOpt_ShiftRight additive_expression {$$=new NifixExpression(ENO_ShiftRight,$1,$3);}
+  | shift_expression TokenOpt_ShiftLeft additive_expression {$$=new ASTNifixExpression(ENO_ShiftLeft,$1,$3);}
+  | shift_expression TokenOpt_ShiftRight additive_expression {$$=new ASTNifixExpression(ENO_ShiftRight,$1,$3);}
   ;
 
 relational_expression
   : shift_expression {$$=$1;}
-  | relational_expression TokenOpt_Less shift_expression {$$=new NifixExpression(ENO_Less,$1,$3);}
-  | relational_expression TokenOpt_More shift_expression {$$=new NifixExpression(ENO_More,$1,$3);}
-  | relational_expression TokenOpt_LessEqual shift_expression {$$=new NifixExpression(ENO_LessEqual,$1,$3);}
-  | relational_expression TokenOpt_MoreEqual shift_expression {$$=new NifixExpression(ENO_MoreEqual,$1,$3);}
+  | relational_expression TokenOpt_Less shift_expression {$$=new ASTNifixExpression(ENO_Less,$1,$3);}
+  | relational_expression TokenOpt_More shift_expression {$$=new ASTNifixExpression(ENO_More,$1,$3);}
+  | relational_expression TokenOpt_LessEqual shift_expression {$$=new ASTNifixExpression(ENO_LessEqual,$1,$3);}
+  | relational_expression TokenOpt_MoreEqual shift_expression {$$=new ASTNifixExpression(ENO_MoreEqual,$1,$3);}
   ;
 equality_expression
   : relational_expression    %prec lower_than_more {$$=$1;}
-  | equality_expression TokenOpt_Equal relational_expression %prec lower_than_more {$$=new NifixExpression(ENO_Equal,$1,$3);}
-  | equality_expression TokenOpt_NotEqual relational_expression %prec lower_than_more {$$=new NifixExpression(ENO_NotEqual,$1,$3);}
+  | equality_expression TokenOpt_Equal relational_expression %prec lower_than_more {$$=new ASTNifixExpression(ENO_Equal,$1,$3);}
+  | equality_expression TokenOpt_NotEqual relational_expression %prec lower_than_more {$$=new ASTNifixExpression(ENO_NotEqual,$1,$3);}
   ;
 and_expression
   : equality_expression {$$=$1;}
-  | and_expression TokenOpt_BitAnd equality_expression {$$=new NifixExpression(ENO_BitAnd,$1,$3);}
+  | and_expression TokenOpt_BitAnd equality_expression {$$=new ASTNifixExpression(ENO_BitAnd,$1,$3);}
   ;
 exclusive_or_expression
   : and_expression {$$=$1;}
-  | exclusive_or_expression TokenOpt_BitXor and_expression {$$=new NifixExpression(ENO_BitXor,$1,$3);}
+  | exclusive_or_expression TokenOpt_BitXor and_expression {$$=new ASTNifixExpression(ENO_BitXor,$1,$3);}
   ;
 inclusive_or_expression
   : exclusive_or_expression {$$=$1;}
-  | inclusive_or_expression TokenOpt_BitOr exclusive_or_expression {$$=new NifixExpression(ENO_BitOr,$1,$3);}
+  | inclusive_or_expression TokenOpt_BitOr exclusive_or_expression {$$=new ASTNifixExpression(ENO_BitOr,$1,$3);}
   ;
 conditional_and_expression
   : inclusive_or_expression {$$=$1;}
-  | conditional_and_expression TokenOpt_And inclusive_or_expression {$$=new NifixExpression(ENO_And,$1,$3);}
+  | conditional_and_expression TokenOpt_And inclusive_or_expression {$$=new ASTNifixExpression(ENO_And,$1,$3);}
   ;
 conditional_or_expression
   : conditional_and_expression {$$=$1;}
-  | conditional_or_expression TokenOpt_Or conditional_and_expression {$$=new NifixExpression(ENO_Or,$1,$3);}
+  | conditional_or_expression TokenOpt_Or conditional_and_expression {$$=new ASTNifixExpression(ENO_Or,$1,$3);}
   ;
 conditional_expression
   : conditional_or_expression {$$=$1;}
   ;
 /*等式*/
 assignment
-  : unary_expression assignment_operator expression {$$=new AssignmentExpression($2,$1,$3);}
+  : unary_expression assignment_operator expression {$$=new ASTAssignmentExpression($2,$1,$3);}
   ;
 assignment_operator
   : TokenOpt_SetValue {$$=EAO_Assign;}| TokenOpt_SetAdd{$$=EAO_AddAssign;} | TokenOpt_SetSub {$$=EAO_SubAssign;}
@@ -775,11 +779,11 @@ assignment_operator
 
 /*常量表达式*/
 constant_expression
-  : expression { $$=new ConstantExpression($1); if(!$$->checkNode()) yyerror("this is not constant expression");}
+  : expression { $$=new ASTConstantExpression($1); if(!$$->checkNode()) yyerror("this is not constant expression");}
   ;
 /*布尔表达式*/
 boolean_expression
-  : expression {$$=new BooleanExpression($1); if(!$$->checkNode()) yyerror("this is not boolean expression");}
+  : expression {$$=new ASTBooleanExpression($1); if(!$$->checkNode()) yyerror("this is not boolean expression");}
   ;
 
 expression_opt
@@ -795,10 +799,10 @@ type
   | class_type  %prec lower_than_identify {$$=$1;}
   ;
 simple_type
-  : TokenKey_Void {$$=new ClassType();}
+  : TokenKey_Void {$$=new ASTClassType();}
   ;
 class_type
-  : qualified_identifier template_arguments_opt {$$=new ClassType($1); $$->setTemplateArgument($2);}
+  : qualified_identifier template_arguments_opt {$$=new ASTClassType($1); $$->setTemplateArgument($2);}
   ;
 
 /***** 值的定义 *****/
@@ -807,7 +811,7 @@ variable_reference
   ;
 /***** 表达式定义 *****/
 argument_list
-  : argument {$$=new list<Expression*>(); $$->push_back($1);}
+  : argument {$$=new list<ASTExpression*>(); $$->push_back($1);}
   | argument_list TokenOpt_Comma argument {$1->push_back($3);}
   ;
 argument
@@ -817,16 +821,16 @@ argument
 /***** 常量 *****/
 literal
   : boolean_literal {$$=$1;}
-  | Token_Integer {$$=new Literal(IntegerLiteral,$1);}
-  | Token_Float {$$=new Literal(FloatLiteral,$1);}
-  | Token_Character {$$=new Literal(CharacterLiteral,$1);}
-  | Token_String {$$=new Literal(StringLiteral,$1);}
-  | TokenKey_Null {$$=new Literal(NullLiteral,nullptr);}
+  | Token_Integer {$$=new ASTLiteral(IntegerLiteral,$1);}
+  | Token_Float {$$=new ASTLiteral(FloatLiteral,$1);}
+  | Token_Character {$$=new ASTLiteral(CharacterLiteral,$1);}
+  | Token_String {$$=new ASTLiteral(StringLiteral,$1);}
+  | TokenKey_Null {$$=new ASTLiteral(NullLiteral,nullptr);}
   ;
 
 boolean_literal
-  : TokenKey_True { $$=new Literal(TrueLiteral,nullptr);}
-  | TokenKey_False { $$=new Literal(FalseLiteral,nullptr);}
+  : TokenKey_True { $$=new ASTLiteral(TrueLiteral,nullptr);}
+  | TokenKey_False { $$=new ASTLiteral(FalseLiteral,nullptr);}
   ;
 
 %%

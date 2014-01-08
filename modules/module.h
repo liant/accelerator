@@ -22,6 +22,17 @@ enum ModuleProtocol
     ModuleProtocol_Private,
 };
 
+enum ModuleAttribute
+{
+    ModuleAttribute_None=0,
+    ModuleAttribute_Static=1,
+    ModuleAttribute_Const=2,
+    ModuleAttribute_Virtual=4,
+    ModuleAttribute_Final=8,
+    ModuleAttribute_Set=16,
+    ModuleAttribute_Get=32,
+};
+
 class Module
 {
     public:
@@ -29,8 +40,10 @@ class Module
         virtual ~Module();
         //将代码写入后端
         virtual bool codegen();
+        bool checkAttribute(ModuleAttribute attribute);
         ModuleProtocol openProtocol;
         ModuleType type;
+        ModuleAttribute attribute;
     protected:
 
     private:
