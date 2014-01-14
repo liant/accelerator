@@ -10,6 +10,7 @@ class ASTBlockStatment:public ASTStatment
     public:
         ASTBlockStatment(std::list<ASTStatment*> *pStatmentList);
         virtual ~ASTBlockStatment();
+        virtual bool codegen(Module *pModule);
     protected:
         std::list<ASTStatment*> *pStatmentList;
     private:

@@ -57,7 +57,7 @@
     ASTNode* *pArray;
      Protocol protocol;
      TokenType tokentype;
-     Modifier modifiertype;
+     Attribute attribute;
      ExpressionOverrideOperator override_operator;
      ExpressionAssignmentOperator assign_operator;
      ASTCaseStatment *casestatment;
@@ -67,7 +67,7 @@
 
 %type <protocol> protocol_opt protocol
 
-%type <modifiertype> modifier modifiers_opt modifiers
+%type <attribute> attribute attributes_opt attributes
 
 %type <token> Token_String Token_Character  Token_Float Token_Integer Token_Identify
 %type <tokenList>qualified_identifier
@@ -102,7 +102,7 @@
 %type <node> class_member_declaration class_protocol_member class_modifiers_declaration
 
 %type <function> function_declaration function_header
-%type <modifiertype> function_modifier_opt function_modifier
+%type <attribute> function_attribute_opt function_attribute
 %type <statment> function_body
 %type <objectList> function_parameter_list
 %type <object> function_parameter
@@ -173,17 +173,17 @@ protocol
   |TokenKey_Private {$$=Protocol_Private;}
    ;
    /*对象的生成控制*/
-modifiers_opt
-   : %prec lower_than_identify {$$=Modifier_None;}
-   | modifiers {$$=$1;}
+attributes_opt
+   : %prec lower_than_identify {$$=Attribute_None;}
+   | attributes {$$=$1;}
    ;
-modifiers
-   : modifier {$$=$1;}
-   | modifiers modifier {$1=(Modifier)($1|$2);}
+attributes
+   : attribute {$$=$1;}
+   | attributes attribute {$1=(Attribute)($1|$2);}
     ;
-modifier
-    : TokenKey_Static {$$=Modifier_Static;}
-    | TokenKey_Const {$$=Modifier_Const;}
+attribute
+    : TokenKey_Static {$$=Attribute_Static;}
+    | TokenKey_Const {$$=Attribute_Const;}
      ;
 
 /******************************* 递归标识符 a.b.c.d这种 ******************************************/
@@ -393,7 +393,7 @@ class_member_declarations
   : protocol_opt class_protocol_member {$2->setProtocol($1);$$=$2;}
   ;
   class_protocol_member
-  : modifiers_opt class_modifiers_declaration {$2->setModifiers($1);$$=$2;}
+  : attributes_opt class_modifiers_declaration {$2->setAttribute($1);$$=$2;}
   | class_body {$$=new ASTBlock($1);}
   ;
 class_modifiers_declaration
@@ -406,18 +406,18 @@ function_declaration
   : function_header function_body {$$=$1; $$->setContent($2);}
   ;
 function_header
-  : type function_modifier_opt Token_Identify TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
-    {$$=new ASTFunction($1,$3); $$->setFunctionModifier($2); $$->setParams($5);}
+  : type function_attribute_opt Token_Identify TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
+    {$$=new ASTFunction($1,$3); $$->setFunctionAttribute($2); $$->setParams($5);}
   | type TokenKey_Operator operator_override TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
     {$$=new ASTFunction($1,$3); $$->setParams($5);}
   ;
-function_modifier_opt
-  : {$$=Modifier_None;}
-  | function_modifier {$$=$1;}
+function_attribute_opt
+  : {$$=Attribute_None;}
+  | function_attribute {$$=$1;}
   ;
-function_modifier
-  : TokenKey_Set {$$=Modifier_Set;}
-  | TokenKey_Get {$$=Modifier_Get;}
+function_attribute
+  : TokenKey_Set {$$=Attribute_Set;}
+  | TokenKey_Get {$$=Attribute_Get;}
   ;
 function_empty_body
   : TokenOpt_End
@@ -453,8 +453,8 @@ statement
   ;
 /*定义语句********************************************************/
 declaration_statement
-  : modifiers_opt local_variable_declaration TokenOpt_End
-  { $2->setModifiers($1); $$=new ASTDeclareStatment($2);}
+  : attributes_opt local_variable_declaration TokenOpt_End
+  { $2->setAttribute($1); $$=new ASTDeclareStatment($2);}
   ;
 local_variable_declaration
   :  class_type variable_declarators {$$=new ASTClassObjectBlock($1,$2);}

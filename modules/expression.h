@@ -4,6 +4,7 @@
 //表达式
 #include "instruction.h"
 #include "classobject.h"
+#include <llvm/IR/IRBuilder.h>
 
 class Expression
 {

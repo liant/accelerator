@@ -8,15 +8,16 @@
 
 #include <list>
 
+class Module;
+
 class ASTClass:public ASTNode
 {
     public:
         ASTClass(ASTClassType *pType,ASTToken *pName,std::list<ASTClassType*> *pExtendList);
         virtual ~ASTClass();
         void setContent(std::list<ASTNode*> *pContent);
+        virtual bool codegen(Module *pModule);
     protected:
-        ASTTemplate *pTemplate;
-        ASTToken *pProtocol;
         ASTClassType *pType;
         ASTToken *pName;
         std::list<ASTClassType*> *pExtendList;

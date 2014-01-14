@@ -1,50 +1,30 @@
 #ifndef MODULE_H
 #define MODULE_H
 
-enum ModuleType
-{
-    Module_Package,
-    Module_Class,
-    Module_ClassObject,
-    Module_Interface,
-    Module_Delegate,
-    Module_Enum,
-    Module_Function,
-    Module_Statment,
-    Module_Expression,
-};
+#include "common.h"
 
-//模块开放性
-enum ModuleProtocol
-{
-    ModuleProtocol_Public,
-    ModuleProtocol_Protected,
-    ModuleProtocol_Private,
-};
-
-enum ModuleAttribute
-{
-    ModuleAttribute_None=0,
-    ModuleAttribute_Static=1,
-    ModuleAttribute_Const=2,
-    ModuleAttribute_Virtual=4,
-    ModuleAttribute_Final=8,
-    ModuleAttribute_Set=16,
-    ModuleAttribute_Get=32,
-};
+#include <string>
 
 class Module
 {
     public:
-        Module(ModuleType type,ModuleProtocol openProtocol);
+        Module(ModuleType type,Module *pParent,std::string name,Protocol protocol);
         virtual ~Module();
         //将代码写入后端
-        virtual bool codegen();
-        bool checkAttribute(ModuleAttribute attribute);
-        ModuleProtocol openProtocol;
+        virtual bool codegen(Module *pModule);
+        bool checkAttribute(Attribute attribute);
+        /////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
         ModuleType type;
-        ModuleAttribute attribute;
+        Module *pParent;
+        std::string name;
+        Protocol protocol;
+        Attribute attribute;
+        ////////////////////////////////////////////////
+
     protected:
+        //父模块
+
 
     private:
 };

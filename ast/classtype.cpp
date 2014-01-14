@@ -21,3 +21,10 @@ void ASTClassType::setTemplateArgument(std::list<ASTExpression*> *pTemplateArgum
 {
     this->pTemplateArgument=pTemplateArgument;
 }
+
+Class *ASTClassType::createModule()
+{
+  //  Class *pClass;
+//    pClass=new Class(null,nullptr,nullptr,Protocol_Protected);
+    return nullptr;
+}

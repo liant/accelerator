@@ -10,6 +10,7 @@ class ASTPrefixExpression:public ASTExpression
     public:
         ASTPrefixExpression(ExpressionPrefixOperator mOperator,ASTExpression *pExpression);
         virtual ~ASTPrefixExpression();
+        virtual bool codegen(Module *pModule);
     protected:
         ExpressionPrefixOperator mOperator;
         ASTExpression *pExpression;

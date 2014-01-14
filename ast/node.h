@@ -2,8 +2,8 @@
 #define NODE_H
 
 #include "nodetype.h"
-#include "protocoltype.h"
-#include "modifier.h"
+#include "../modules/common.h"
+#include "../modules/module.h"
 
 #include <list>
 
@@ -16,19 +16,20 @@ class ASTNode
     public:
         ASTNode(NodeType nType);
         virtual ~ASTNode();
-        //生成代码函数,并把代码写入上下文中////////////////////////
-        virtual void codegen(Context *pContext);
         //检查节点,是否是符合标准的节点
         virtual bool checkNode();
         /////////////////////////////////////
         void setProtocol(Protocol type);
-        void setModifiers(Modifier modifiers);
+        void setAttribute(Attribute attribute);
         void setTemplate(ASTTemplate *pTemplate);
-    protected:
+        virtual bool codegen(Module *pModule);
+
         NodeType nodeType;
         Protocol protocolType;
-        Modifier modifiers;
+        Attribute attribute;
         ASTTemplate *pTemplate;
+    protected:
+
     private:
 
 };

@@ -1,8 +1,9 @@
 #include "package.h"
-
+#include <iostream>
 using namespace std;
 
-Package::Package(string name):Module(Module_Package,ModuleProtocol_Protected),name(name)
+Package::Package(string name,Module *pParent,Protocol protocol)
+    :Module(Module_Package,pParent,name,protocol)
 {
     //ctor
 }
@@ -12,98 +13,126 @@ Package::~Package()
     //dtor
 }
 
-bool Package::addPackage(Package *pPackage)
+Package *Package::createPackage(string name)
 {
-    if(pPackage==0) {
-        return true;
+    if(selectChild(name)) {
+        cout<<"包命名冲突:无法创建包"<<name<<endl;
+        return nullptr;
     }
-    if(selectChild(pPackage->name)) {
-        return false;
-    }
+    Package *pPackage;
+    pPackage=new Package(name,this,Protocol_Protected);
     mContent.push_back(pPackage);
-    return true;
+    return pPackage;
 }
-bool Package::addClass(Class *pClass)
+
+void Package::deletePackage(std::string name)
 {
-    if(pClass==0) {
-        return true;
+    Module *pModule;
+    pModule=selectChild(name);
+    if(pModule) {
+        if(pModule->type==Module_Package) {
+            mContent.remove(pModule);
+        }
     }
-    if(selectChild(pClass->name)) {
-        return false;
+}
+
+Class *Package::createClass(string name,Template *pTemplate)
+{
+    if(selectChild(name)) {
+        cout<<"类命名冲突:无法创建类"<<name<<endl;
+        return nullptr;
     }
+    Class *pClass;
+    pClass=new Class(name,pTemplate,this,Protocol_Protected);
     mContent.push_back(pClass);
-    return true;
+    return pClass;
 }
-bool Package::addEnum(Enum *pEnum)
+
+void Package::deleteClass(string name)
 {
-    if(pEnum==0) {
-        return true;
+    Module *pModule;
+    pModule=selectChild(name);
+    if(pModule) {
+        if(pModule->type==Module_Class) {
+            mContent.remove(pModule);
+        }
     }
-    if(selectChild(pEnum->name)) {
-        return false;
-    }
-    mContent.push_back(pEnum);
-    return true;
 }
-bool Package::addInterface(Interface *pInterface)
+
+//创建一个子枚举
+Enum *Package::createEnum(string name)
 {
-    if(pInterface==0) {
-        return true;
+        if(selectChild(name)) {
+        cout<<"枚举命名冲突:无法创建枚举"<<name<<endl;
+        return nullptr;
     }
-    if(selectChild(pInterface->name)) {
-        return false;
-    }
-    mContent.push_back(pInterface);
-    return true;
+    Enum *pClass;
+    pClass=new Enum(name,this,Protocol_Protected);
+    mContent.push_back(pClass);
+    return pClass;
 }
-bool Package::addDelegate(Delegate *pDelegate)
+void Package::deleteEnum(string name)
 {
-    if(pDelegate==0) {
-        return true;
+    Module *pModule;
+    pModule=selectChild(name);
+    if(pModule){
+        if(pModule->type==Module_Enum){
+            mContent.remove(pModule);
+        }
     }
-    if(selectChild(pDelegate->name)) {
-        return false;
+}
+//创建一个子接口
+Interface *Package::createInterface(string name,Template *pTemplate)
+{
+        if(selectChild(name)) {
+        cout<<"接口命名冲突:无法接口类"<<name<<endl;
+        return nullptr;
     }
-    mContent.push_back(pDelegate);
-    return true;
+    Interface *pClass;
+    pClass=new Interface(name,pTemplate,this,Protocol_Protected);
+    mContent.push_back(pClass);
+    return pClass;
+}
+
+void Package::deleteInterface(string name)
+{
+    Module *pModule;
+    pModule=selectChild(name);
+    if(pModule){
+        if(pModule->type==Module_Interface){
+            mContent.remove(pModule);
+        }
+    }
+}
+//创建一个子委托
+Delegate* Package::createDelegate(string name)
+{
+    if(selectChild(name)) {
+        cout<<"委托命名冲突:无法创建委托"<<name<<endl;
+        return nullptr;
+    }
+    Delegate *pClass;
+    pClass=new Delegate(name,this,Protocol_Protected);
+    mContent.push_back(pClass);
+    return pClass;
+}
+
+void Package::deleteDelegate(string name)
+{
+    Module *pModule;
+    pModule=selectChild(name);
+    if(pModule) {
+        if(pModule->type==Module_Delegate) {
+            mContent.remove(pModule);
+        }
+    }
 }
 
 Module *Package::selectChild(string name)
 {
     for(auto node:mContent) {
-        switch(node->type) {
-        case   Module_Package: {
-            if(((Package*)node)->name==name) {
-                return node;
-            }
-            continue;
-        }
-        case Module_Class: {
-            if(((Class*)node)->name==name) {
-                return node;
-            }
-            continue;
-        }
-        case Module_Interface: {
-            if(((Interface*)node)->name==name) {
-                return node;
-            }
-            continue;
-        }
-        case Module_Enum: {
-            if(((Enum*)node)->name==name) {
-                return node;
-            }
-            continue;
-        }
-        case Module_Delegate: {
-            if(((Delegate*)node)->name==name) {
-                return node;
-            }
-            continue;
-        }
-        default:
-            ;
+        if(node->name==name) {
+            return node;
         }
     }
     return nullptr;

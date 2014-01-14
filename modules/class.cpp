@@ -1,9 +1,12 @@
 #include "class.h"
+#include "classobject.h"
+#include "function.h"
+#include "interface.h"
 
 using namespace std;
 
-Class::Class(Class *pSuper,string name,ModuleProtocol protocol)
-    :Module(Module_Class,protocol),pSuper(pSuper),name(name)
+Class::Class(std::string name,Template *pTemplate,Module *pParent,Protocol protocol)
+    :Module(Module_Class,pParent,name,protocol),pSuper(nullptr),name(name),mTemplate(pTemplate)
 {
     //ctor
 }
@@ -13,14 +16,10 @@ Class::~Class()
     //dtor
 }
 
-bool Class::addObject(ClassObject *pObject)
-{
-    return true;
-}
-
+/*
 bool Class::addFunction(Function *pFunction)
 {
-    if(pFunction->checkAttribute(ModuleAttribute_Set)) {
+    if(pFunction->checkAttribute(Attribute_Set)) {
         //在Object列表中添加set操作
         for(auto item:mObject) {
             if(item->name==pFunction->name) {
@@ -33,12 +32,12 @@ bool Class::addFunction(Function *pFunction)
         }
         //如果没有,则添加
         ClassObject *pObject;
-        pObject=new ClassObject(pFunction->pType,pFunction->name);
+        pObject=new ClassObject(pFunction->pType,pFunction->name,this,Protocol_Protected);
         pObject->pSet=pFunction;
         mObject.push_back(pObject);
         return true;
     }
-    if(pFunction->checkAttribute(ModuleAttribute_Get)) {
+    if(pFunction->checkAttribute(Attribute_Get)) {
         //在Object列表中添加set操作
         for(auto item:mObject) {
             if(item->name==pFunction->name) {
@@ -51,7 +50,7 @@ bool Class::addFunction(Function *pFunction)
         }
         //如果没有,则添加
         ClassObject *pObject;
-        pObject=new ClassObject(pFunction->pType,pFunction->name);
+        pObject=new ClassObject(pFunction->pType,pFunction->name,this,Protocol_Protected);
         pObject->pGet=pFunction;
         mObject.push_back(pObject);
         return true;
@@ -65,7 +64,7 @@ bool Class::addFunction(Function *pFunction)
     mContent.push_back(pFunction);
     return true;
 }
-
+*/
 Module *Class::selectChild(string name)
 {
     for(auto item:mObject) {

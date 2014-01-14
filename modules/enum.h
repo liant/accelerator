@@ -13,10 +13,13 @@ class EnumItem
     uintptr_t value;
 };
 
+class Class;
+class ClassObject;
+
 class Enum:public Module
 {
     public:
-        Enum(Enum *pSuper,std::string name,Enum *pExtend,ModuleProtocol protocol=ModuleProtocol_Protected);
+        Enum(std::string name,Module *pParent,Protocol protocol);
         virtual ~Enum();
         virtual bool addItem(std::string name);
         virtual bool addItem(std::string name,uintptr_t data);
@@ -25,9 +28,13 @@ class Enum:public Module
         virtual bool checkItemValue(uintptr_t value);
         virtual uintptr_t autoMaxValue();
         std::string name;
-    protected:
         Enum *pSuper;
         Enum *pExtend;
+        Class *pSuperType;
+        Class *pExtendType;
+        std::list<ClassObject*> mContentObject;
+
+    protected:
         std::list<EnumItem> mContent;
         uintptr_t maxValue;
     private:

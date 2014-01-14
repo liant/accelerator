@@ -24,6 +24,8 @@
 					<Add directory="contextstatments" />
 					<Add directory="context/expressions" />
 					<Add directory="modules" />
+					<Add directory="libs/lang" />
+					<Add directory="codegen" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -43,6 +45,8 @@
 					<Add directory="contextstatments" />
 					<Add directory="context/expressions" />
 					<Add directory="modules" />
+					<Add directory="libs/lang" />
+					<Add directory="codegen" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -102,13 +106,11 @@
 		<Unit filename="ast/literal.cpp" />
 		<Unit filename="ast/literal.h" />
 		<Unit filename="ast/literaltype.h" />
-		<Unit filename="ast/modifier.h" />
 		<Unit filename="ast/node.cpp" />
 		<Unit filename="ast/node.h" />
 		<Unit filename="ast/nodetype.h" />
 		<Unit filename="ast/package.cpp" />
 		<Unit filename="ast/package.h" />
-		<Unit filename="ast/protocoltype.h" />
 		<Unit filename="ast/statment.cpp" />
 		<Unit filename="ast/statment.h" />
 		<Unit filename="ast/statments/blockstatment.cpp" />
@@ -138,6 +140,10 @@
 		<Unit filename="ast/template.h" />
 		<Unit filename="ast/token.cpp" />
 		<Unit filename="ast/token.h" />
+		<Unit filename="codegen/llvmexpression.cpp" />
+		<Unit filename="codegen/llvmexpression.h" />
+		<Unit filename="libs/lang/class.cpp" />
+		<Unit filename="libs/lang/class.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="modules/block.cpp" />
 		<Unit filename="modules/block.h" />
@@ -145,6 +151,7 @@
 		<Unit filename="modules/class.h" />
 		<Unit filename="modules/classobject.cpp" />
 		<Unit filename="modules/classobject.h" />
+		<Unit filename="modules/common.h" />
 		<Unit filename="modules/context.cpp" />
 		<Unit filename="modules/context.h" />
 		<Unit filename="modules/delegate.cpp" />

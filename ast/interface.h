@@ -9,12 +9,15 @@
 
 #include <list>
 
+class Module;
+
 class ASTInterface:public ASTNode
 {
     public:
         ASTInterface(ASTToken *pName,std::list<ASTClassType*> *pExtend);
         virtual ~ASTInterface();
         void setContent(std::list<ASTFunction*> *pContent);
+        virtual bool codegen(Module *pModule);
     protected:
         ASTToken *pName;
         std::list<ASTClassType*> *pExtend;

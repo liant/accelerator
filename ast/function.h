@@ -4,7 +4,6 @@
 #include "node.h"
 #include "token.h"
 #include "classtype.h"
-#include "modifier.h"
 #include "expressiontype.h"
 #include "statment.h"
 #include "classobject.h"
@@ -16,18 +15,21 @@ class ASTFunction:public ASTNode
         ASTFunction(ASTClassType *pType,ASTToken *pName);
         ASTFunction(ASTClassType *pType,ExpressionOverrideOperator orOperator);
         virtual ~ASTFunction();
-        void setFunctionModifier(Modifier functionModifier);
+        void setFunctionAttribute(Attribute attribute);
         void setContent(ASTStatment *pContent);
         void setParams(std::list<ASTClassObject*> *pParams);
-    protected:
         ASTClassType *pType;
         std::list<ASTClassObject*> *pParams;
         union{
             ASTToken *pName;
             ExpressionOverrideOperator orOperator;
         };
-        Modifier functionModifier;
+        Attribute functionAttribute;
         ASTStatment *pContent;
+        virtual bool codegen(Module *pModule);
+    protected:
+
+
 
     private:
 };

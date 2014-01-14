@@ -1,5 +1,8 @@
 #include "package.h"
 #include "../modules/package.h"
+#include "../modules/context.h"
+
+#include <iostream>
 
 using namespace std;
 
@@ -12,8 +15,21 @@ ASTPackage::~ASTPackage()
 {
     //dtor
     //释放pNameList
+    if(pNameList) {
+        for(auto item:*pNameList) {
+            delete item;
+        }
+        delete pNameList;
+    }
 
     //释放pContent
+    if(pContent) {
+        for(auto item:*pContent) {
+            delete item;
+        }
+        delete pContent;
+    }
+
 }
 
 void ASTPackage::setContent(list<ASTNode*> *pContent)
@@ -21,50 +37,34 @@ void ASTPackage::setContent(list<ASTNode*> *pContent)
     this->pContent=pContent;
 }
 
-void ASTPackage::codegen(Context *pContext)
+bool ASTPackage::codegen(Module *pModule)
 {
-    /*
-    MPackage *pPackage;
-    std::list<Token*> *pNameList;
-    for(auto item:*pNameList){
-        pPackage=new MPackage(name);
-        if(!pContext->enterModule(item->toString()))
+    Context *pContext;
+    if(pModule==nullptr) {
+        pContext=Context::getGlobalContext();
+
     }
 
-    pContext->addModule(pPackage);
-    for(auto item:*pContent)
-    {
-        switch(item->nodeType){
-            case NT_Package:{
-                //如果是import 则导入包到pContext
-            }
-            case NT_Enum:{
-                //如果是enum 则在pContext中创建enum
-            }
-            case NT_Class:{
-                //如果是class 则在pContext中创建class
-            }
-            case NT_Function:{
-                //如果是delegate 则在pContext中创建enum
-            }
-            case NT_Interface:{
-                //如果是interface 则在pContext中创建enum
-            }
-
-        }
+    Package *pPackage;
+    string fullname;
+    if(pNameList==nullptr) {
+        cout<<"空的包名字!"<<endl;
+        return nullptr;
     }
-
-
-
-
-
-    */
-
-
-
-
-    //分别细化,每个子项目
-
-    //////////////////////////
-    //将内容写入context中的模块中
+    for(auto item:*pNameList) {
+        fullname+=("."+item->toString());
+    }
+    if(fullname.empty()) {
+        cout<<"空的包名字!"<<endl;
+        return nullptr;
+    }
+    pPackage=pContext->createPackage(fullname,protocol);
+    if(pPackage) {
+        //为当前Package添加子项
+        if(pContent)
+            for(auto item:*pContent) {
+                item->codegen(pPackage);
+            }
+    }
+    return false;
 }

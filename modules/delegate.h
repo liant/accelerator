@@ -2,19 +2,19 @@
 #define MDELEGATE_H
 
 #include "module.h"
-#include "classobject.h"
-#include "class.h"
 
 #include <string>
 #include <list>
 
+class ClassObject;
+class Class;
+
 class Delegate:public Module
 {
     public:
-        Delegate(Class *classType,std::string name,ModuleProtocol protocol=ModuleProtocol_Protected);
+        Delegate(std::string name,Module *pParent,Protocol protocol);
         virtual ~Delegate();
         Class *classType;
-        std::string name;
         std::list<ClassObject*> mParamList;
     protected:
     private:

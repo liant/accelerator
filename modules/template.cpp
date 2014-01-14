@@ -20,7 +20,7 @@ bool Template::pushParams(ClassObject *pObject)
     if(pObject->name.empty()) {
         return false;
     }
-    if(pObject->pType==nullptr) {
+    if(pObject->pclassType==nullptr) {
         return false;
     }
     /////////////////////////////////////////////////

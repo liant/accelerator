@@ -13,6 +13,9 @@ enum MInstruction
     MI_JmpNZ,
     MI_Return,
     ////////////////////
+    MI_Inc,
+    MI_Dec,
+    ///////////////////
     MI_Add,
     MI_Sub,
     MI_Mul,

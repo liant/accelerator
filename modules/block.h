@@ -3,14 +3,16 @@
 
 #include "classobject.h"
 #include "expression.h"
+#include "module.h"
 
 #include <list>
 
-class Block
+class Block:public Module
 {
     public:
         Block();
         virtual ~Block();
+        ClassObject *createObject();
         ////////////////////
          //数据区
         std::list<ClassObject*> mData;

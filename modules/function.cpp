@@ -13,7 +13,8 @@ class FunctionBase
         Block *pContent;
 };
 
-Function::Function(Class *pType,string name):Module(Module_Function,ModuleProtocol_Protected)
+Function::Function(Class *pType,string name,Module *pParent,Protocol protocol)
+    :Module(Module_Function,pParent,name,protocol)
 {
     //ctor
 }

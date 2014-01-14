@@ -3,7 +3,6 @@
 
 #include "node.h"
 #include "token.h"
-#include "protocoltype.h"
 
 #include <list>
 
@@ -13,7 +12,7 @@ class ASTPackage:public ASTNode
         ASTPackage(Protocol protocol,std::list<ASTToken*> *pNameList);
         virtual ~ASTPackage();
         void setContent(std::list<ASTNode*> *pContent);
-        virtual void codegen(Context *pContext);
+        virtual bool codegen(Module *pModule);
     protected:
         Protocol protocol;
         std::list<ASTToken*> *pNameList;

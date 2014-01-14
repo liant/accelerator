@@ -1,9 +1,10 @@
 #include "interface.h"
+#include "function.h"
 
 using namespace std;
 
-Interface::Interface(std::string name,Template *pTemplate,ModuleProtocol protocol)
-    :Module(Module_Interface,protocol),name(name),mTemplate(pTemplate)
+Interface::Interface(std::string name,Template *pTemplate,Module *pParent,Protocol protocol)
+    :Module(Module_Interface,pParent,name,protocol),mTemplate(pTemplate)
 {
     //ctor
 }

@@ -1,7 +1,9 @@
 #include "module.h"
 
-Module::Module(ModuleType type,ModuleProtocol openProtocol)
-    :openProtocol(openProtocol),type(type),attribute(ModuleAttribute_None)
+using namespace std;
+
+Module::Module(ModuleType type,Module *pParent,string name,Protocol protocol)
+    :type(type),pParent(pParent),name(name),protocol(protocol),attribute(Attribute_None)
 {
     //ctor
 }
@@ -11,12 +13,12 @@ Module::~Module()
     //dtor
 }
 
-bool Module::codegen()
+bool Module::codegen(Module *pModule)
 {
     return true;
 }
 
-bool Module::checkAttribute(ModuleAttribute attribute)
+bool Module::checkAttribute(Attribute attribute)
 {
     if(this->attribute&attribute){
         return true;

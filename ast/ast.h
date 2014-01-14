@@ -1,9 +1,6 @@
 #ifndef CONTEXTAST_H
 #define CONTEXTAST_H
 
-#include "protocoltype.h"
-#include "modifier.h"
-
 #include "node.h"
 #include "token.h"
 #include "literal.h"

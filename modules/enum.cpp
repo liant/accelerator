@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Enum::Enum(Enum *pSuper,string name,Enum *pExtend,ModuleProtocol protocol)
-    :Module(Module_Enum,protocol),name(name),pSuper(pSuper),pExtend(pExtend),maxValue(0)
+Enum::Enum(string name,Module *pParent,Protocol protocol)
+    :Module(Module_Enum,pParent,name,protocol),pSuper(nullptr),pExtend(nullptr),pSuperType(nullptr),pExtendType(nullptr),maxValue(0)
 {
     //ctor
 }

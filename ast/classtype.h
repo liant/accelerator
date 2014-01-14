@@ -6,6 +6,8 @@
 
 #include <list>
 
+class Class;
+
 class ASTClassType:public ASTNode
 {
     public:
@@ -13,6 +15,7 @@ class ASTClassType:public ASTNode
         ASTClassType(std::list<ASTToken*> *pList);
         virtual ~ASTClassType();
         void setTemplateArgument(std::list<ASTExpression*> *pTemplateArgument);
+        Class *createModule();
     protected:
         std::list<ASTToken*> *pNameList;
         std::list<ASTExpression*> *pTemplateArgument;

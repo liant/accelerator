@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Delegate::Delegate(Class *classType,string name,ModuleProtocol protocol)
-    :Module(Module_Delegate,protocol),classType(classType),name(name)
+Delegate::Delegate(string name,Module *pParent,Protocol protocol)
+    :Module(Module_Delegate,pParent,name,protocol)
 {
     //ctor
 }

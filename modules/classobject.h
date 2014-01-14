@@ -10,13 +10,15 @@ class Function;
 class ClassObject:public Module
 {
     public:
-        ClassObject(Class *pType,std::string name,ModuleProtocol protocol=ModuleProtocol_Protected);
+        ClassObject(Class *pType,std::string name,Module *pParent,Protocol protocol);
+        ClassObject(Module *pParent);
         virtual ~ClassObject();
-        Class *pType; //类型
-        std::string name;
+        Class *pclassType; //类型
         Function *pSet;
         Function *pGet;
+        static int maxid;
     protected:
+
         unsigned char *data;
         int len;
 
