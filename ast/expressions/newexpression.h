@@ -6,11 +6,14 @@
 
 #include <list>
 
+class Module;
+
 class ASTNewExpression:public ASTExpression
 {
     public:
         ASTNewExpression(ASTClassType *pType,std::list<ASTExpression*> *pParam);
         virtual ~ASTNewExpression();
+        virtual bool codegen(Module *pModule);
     protected:
         ASTClassType *pType;
         std::list<ASTExpression*> *pParam;

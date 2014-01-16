@@ -11,9 +11,10 @@ class ASTClassObjectBlock:public ASTNode
     public:
         ASTClassObjectBlock(ASTClassType *pType,std::list<ASTClassObject*> *pContent);
         virtual ~ASTClassObjectBlock();
-    protected:
         ASTClassType *pType;
         std::list<ASTClassObject*> *pContent;
+    protected:
+
     private:
 };
 

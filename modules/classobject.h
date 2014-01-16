@@ -17,6 +17,8 @@ class ClassObject:public Module
         Function *pSet;
         Function *pGet;
         static int maxid;
+        //设置整数
+        void setInt(int value);
     protected:
 
         unsigned char *data;

@@ -40,6 +40,22 @@ enum MInstruction
     MI_ShiftLeft,
     MI_ShiftRight,
     /////////////////////
+    MI_As,
+    MI_To,
+    MI_New,
+    MI_Cast,
+    /////////////////////////
+    MI_Assign,
+    MI_AddAssign,
+    MI_SubAssign,
+    MI_MulAssign,
+    MI_DivAssign,
+    MI_ModAssign,
+    MI_BitAndAssign,
+    MI_BitOrAssign,
+    MI_BitXorAssign,
+    MI_ShiftLeftAssign,
+    MI_ShiftRightAssign,
 };
 
 #endif // MINSTRUCTION_H_INCLUDED

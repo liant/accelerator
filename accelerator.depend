@@ -784,7 +784,7 @@
 1389182938 source:/home/xkaying/桌面/accelerator/accelerator/context/template.cpp
 	"template.h"
 
-1389711813 /home/xkaying/桌面/accelerator/accelerator/parser/parser.parser.hh
+1389865548 /home/xkaying/桌面/accelerator/accelerator/parser/parser.parser.hh
 
 1389184449 source:/home/xkaying/桌面/accelerator/accelerator/modules/mclass.cpp
 	"mclass.h"
@@ -922,7 +922,7 @@
 	"../expression.h"
 	"../classobjectblock.h"
 
-1389340298 source:/home/xkaying/桌面/accelerator/accelerator/parser/parser.y
+1389865426 source:/home/xkaying/桌面/accelerator/accelerator/parser/parser.y
 	"../ast/ast.h"
 	"tokentype.h"
 	<list>
@@ -1005,7 +1005,7 @@
 	"expressions/arrayexpression.h"
 	"expressions/declareexpression.h"
 
-1389184729 source:/home/xkaying/桌面/accelerator/accelerator/modules/block.cpp
+1389719795 source:/home/xkaying/桌面/accelerator/accelerator/modules/block.cpp
 	"block.h"
 
 1389718050 /home/xkaying/桌面/accelerator/accelerator/modules/block.h
@@ -1014,7 +1014,7 @@
 	"module.h"
 	<list>
 
-1389718353 /home/xkaying/桌面/accelerator/accelerator/modules/classobject.h
+1389848764 /home/xkaying/桌面/accelerator/accelerator/modules/classobject.h
 	"module.h"
 	<string>
 
@@ -1023,7 +1023,7 @@
 	"classobject.h"
 	<llvm/IR/IRBuilder.h>
 
-1389719685 /home/xkaying/桌面/accelerator/accelerator/modules/instruction.h
+1389866993 /home/xkaying/桌面/accelerator/accelerator/modules/instruction.h
 
 1389711780 source:/home/xkaying/桌面/accelerator/accelerator/modules/class.cpp
 	"class.h"
@@ -1099,7 +1099,7 @@
 	<list>
 	"../modules/template.h"
 
-1389594853 /home/xkaying/桌面/accelerator/accelerator/ast/classobject.h
+1389850667 /home/xkaying/桌面/accelerator/accelerator/ast/classobject.h
 	"node.h"
 	"classtype.h"
 	"expression.h"
@@ -1121,13 +1121,13 @@
 1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/classobjectblock.cpp
 	"classobjectblock.h"
 
-1389182743 /home/xkaying/桌面/accelerator/accelerator/ast/classobjectblock.h
+1389849659 /home/xkaying/桌面/accelerator/accelerator/ast/classobjectblock.h
 	"node.h"
 	"classobject.h"
 	"classtype.h"
 	<list>
 
-1389182743 source:/home/xkaying/桌面/accelerator/accelerator/ast/classtype.cpp
+1389719804 source:/home/xkaying/桌面/accelerator/accelerator/ast/classtype.cpp
 	"classtype.h"
 
 1389595934 source:/home/xkaying/桌面/accelerator/accelerator/ast/delegate.cpp
@@ -1193,27 +1193,38 @@
 	"../expression.h"
 	<list>
 
-1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/assignmentexpression.cpp
+1389866860 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/assignmentexpression.cpp
 	"assignmentexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	"../modules/classobject.h"
+	<iostream>
 
-1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/assignmentexpression.h
+1389866411 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/assignmentexpression.h
 	"../expression.h"
 	"../expressiontype.h"
 
-1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/booleanexpression.cpp
+1389866341 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/booleanexpression.cpp
 	"booleanexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	<iostream>
 
-1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/booleanexpression.h
+1389866209 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/booleanexpression.h
 	"../expression.h"
 
-1389182421 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/castexpression.cpp
+1389866119 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/castexpression.cpp
 	"castexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	"../modules/classobject.h"
+	<iostream>
 
-1389182421 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/castexpression.h
+1389865703 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/castexpression.h
 	"../expression.h"
 	"../classtype.h"
 
-1389182605 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/constantexpression.cpp
+1389846604 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/constantexpression.cpp
 	"constantexpression.h"
 
 1389182605 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/constantexpression.h
@@ -1221,32 +1232,48 @@
 	"../literal.h"
 	"../classtype.h"
 
-1389182420 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/declareexpression.cpp
+1389850727 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/declareexpression.cpp
 	"declareexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	"../modules/classobject.h"
+	<iostream>
 
-1389182420 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/declareexpression.h
+1389849452 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/declareexpression.h
 	"../expression.h"
 	"../classobjectblock.h"
 
-1389182583 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/invokeexpression.cpp
+1389849894 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/invokeexpression.cpp
 	"invokeexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	"../modules/classobject.h"
+	<iostream>
 
-1389182578 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/invokeexpression.h
+1389848909 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/invokeexpression.h
 	"../expression.h"
 	<list>
 
-1389183150 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/newexpression.cpp
+1389849910 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/newexpression.cpp
 	"newexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	"../modules/classobject.h"
+	<iostream>
 
-1389182644 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/newexpression.h
+1389848880 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/newexpression.h
 	"../expression.h"
 	"classtype.h"
 	<list>
 
-1389182704 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/nifixexpression.cpp
+1389847816 source:/home/xkaying/桌面/accelerator/accelerator/ast/expressions/nifixexpression.cpp
 	"nifixexpression.h"
+	"../modules/expression.h"
+	"../modules/block.h"
+	"../modules/classobject.h"
+	<iostream>
 
-1389182706 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/nifixexpression.h
+1389846827 /home/xkaying/桌面/accelerator/accelerator/ast/expressions/nifixexpression.h
 	"../expression.h"
 	"../expressiontype.h"
 
@@ -1440,7 +1467,7 @@
 1389338901 source:/home/xkaying/桌面/accelerator/accelerator/modules/template.cpp
 	"template.h"
 
-1389339959 /home/xkaying/桌面/accelerator/accelerator/ast/ast.h
+1389865545 /home/xkaying/桌面/accelerator/accelerator/ast/ast.h
 	"node.h"
 	"token.h"
 	"literal.h"
@@ -1460,7 +1487,6 @@
 	"statments/blockstatment.h"
 	"statments/breakstatment.h"
 	"statments/continuestatment.h"
-	"statments/declarestatment.h"
 	"statments/expressionstatment.h"
 	"statments/forstatment.h"
 	"statments/ifstatment.h"

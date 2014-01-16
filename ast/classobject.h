@@ -13,10 +13,11 @@ class ASTClassObject:public ASTNode
         ASTClassObject(ASTClassType *ptype,ASTToken *pName,ASTExpression *pExpression);
         virtual ~ASTClassObject();
         ClassObject *createModule();
-    protected:
         ASTClassType *ptype;
         ASTToken *pName;
         ASTExpression *pExpression;
+    protected:
+
     private:
 };
 

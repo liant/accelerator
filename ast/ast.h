@@ -22,7 +22,6 @@
 #include "statments/blockstatment.h"
 #include "statments/breakstatment.h"
 #include "statments/continuestatment.h"
-#include "statments/declarestatment.h"
 #include "statments/expressionstatment.h"
 #include "statments/forstatment.h"
 #include "statments/ifstatment.h"

@@ -454,7 +454,7 @@ statement
 /*定义语句********************************************************/
 declaration_statement
   : attributes_opt local_variable_declaration TokenOpt_End
-  { $2->setAttribute($1); $$=new ASTDeclareStatment($2);}
+  { $2->setAttribute($1); $$=new ASTExpressionStatment(new ASTDeclareExpression($2));}
   ;
 local_variable_declaration
   :  class_type variable_declarators {$$=new ASTClassObjectBlock($1,$2);}

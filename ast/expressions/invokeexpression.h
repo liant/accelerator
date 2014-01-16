@@ -10,6 +10,7 @@ class ASTInvokeExpression:public ASTExpression
     public:
         ASTInvokeExpression(ASTExpression *pExpression,std::list<ASTExpression*>* pParam);
         virtual ~ASTInvokeExpression();
+        virtual bool codegen(Module *pModule);
     protected:
         ASTExpression *pExpression;
         std::list<ASTExpression*>* pParam;

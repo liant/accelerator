@@ -9,6 +9,7 @@ class ASTNifixExpression:public ASTExpression
     public:
         ASTNifixExpression(ExpressionNifixOperator mOperator,ASTExpression *pOpt1,ASTExpression *pOpt2);
         virtual ~ASTNifixExpression();
+        virtual bool codegen(Module *pModule);
     protected:
         ExpressionNifixOperator mOperator;
         ASTExpression *pOpt1;
