@@ -7,6 +7,7 @@
 
 class Class;
 class Function;
+class Block;
 class ClassObject:public Module
 {
     public:
@@ -19,6 +20,11 @@ class ClassObject:public Module
         static int maxid;
         //设置整数
         void setInt(int value);
+        void setBlock(Block *pBlock);
+        void setClass(Class *pClass);
+        void setAccess(ClassObject *pObject);
+        void setAccess(ClassObject *pObject,std::string name);
+        void addAccessIndex(ClassObject *pIndex);
     protected:
 
         unsigned char *data;

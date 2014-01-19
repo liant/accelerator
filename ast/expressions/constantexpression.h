@@ -5,6 +5,8 @@
 #include "../literal.h"
 #include "../classtype.h"
 
+class Module ;
+
 class ASTConstantExpression:public ASTExpression
 {
     public:
@@ -12,11 +14,13 @@ class ASTConstantExpression:public ASTExpression
         ASTConstantExpression(ASTLiteral *pLiteral);
         ASTConstantExpression(ASTClassType *pType);
         virtual ~ASTConstantExpression();
+        virtual bool codegen(Module *pModule);
     protected:
         ASTExpression *pExpression;
         ASTLiteral *pLiteral;
         ASTClassType *pType;
     private:
+
 };
 
 #endif // CONSTANTEXPRESSION_H

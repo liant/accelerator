@@ -1,5 +1,10 @@
 #include "arrayexpression.h"
 
+#include "../modules/expression.h"
+#include "../modules/block.h"
+#include "../modules/classobject.h"
+#include <iostream>
+
 using namespace std;
 
 ASTArrayExpression::ASTArrayExpression(list<ASTExpression*> *pContent)
@@ -31,26 +36,23 @@ bool ASTArrayExpression::codegen(Module *pModule)
     Block *pBlock;
     pBlock=(Block*)pModule;
 
-    Expression *pExpr;
-    MInstruction inst;
 
+
+    Block *pTBlock;
+    pTBlock=new Block();
     if(pContent){
         for(auto item:*pContent)
         {
-            if(!item->codegen(pBlock))
+            if(!item->codegen(pTBlock))
             {
                 return false;
             }
 
         }
-
-        pBlock->mContent.push_back(new Expression(MI_PointerAssign,retObject,nObject,nullptr));
     }
-    return false;
     //创建一个自定义的对象
     retObject=pBlock->createObject();
-    //创建一个表达式
-    pExpr=new Expression(inst,retObject,pOpt1->retObject,pOpt2->retObject);
+    retObject->setBlock(pTBlock);
 
     return true;
 
