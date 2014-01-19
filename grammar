@@ -1,0 +1,72 @@
+public|protected|private package name.name.name
+{
+  import name.name.name;
+  
+  public|protected|private delegate classname name(function-param);
+  
+  public|protected|private enum<super-class> name:extend-enum
+  {
+     name;
+     name=3;
+  }
+  
+  public|protected|private interface name<template param...>:extend-interface-list
+  {
+    classname name(function-param);
+    classname set name(function-param);
+    classname get name(function-param);
+    classname operator override-op (function-param);
+  }
+  
+  public|protected|private class<super-class> name<template param...>:extend-interface-list
+  {
+    public|protected|private
+    {
+        classname name;
+        classname set|get| name(function-param)
+        {
+          classname name;
+          
+          if(bool)
+          {
+          }else{
+          }
+          
+          while(bool)
+          {
+          
+          }
+          
+          switch()
+          {
+            case label: continue;
+            default: break;
+          }
+          
+          //for each name in object
+          for(classname name:object)
+          {
+          
+          }
+          //for name to object
+          for(classname name=>object)
+          {
+          
+          }
+          
+          classname operator override-op (function-param);
+          
+          return object;
+        }
+    }
+  }
+}
+
+override-op 
+  + - * / % += -= *= /= %=
+  & | ~ ^ << >> &= |= ^= <<= >>=
+  && || ! 
+  < > == <= >=
+  =
+  []
+
