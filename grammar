@@ -1,3 +1,4 @@
+//类c语法
 public|protected|private package name.name.name
 {
   import name.name.name;
