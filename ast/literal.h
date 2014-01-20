@@ -4,11 +4,14 @@
 #include "token.h"
 #include "literaltype.h"
 
+class Module;
+
 class ASTLiteral:public ASTNode
 {
     public:
         ASTLiteral(LiteralType type,ASTToken *ptoken);
         virtual ~ASTLiteral();
+        bool codegen(Module *pModule);
     protected:
     private:
         LiteralType type;

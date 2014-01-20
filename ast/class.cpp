@@ -3,7 +3,11 @@
 #include "../modules/package.h"
 #include "../modules/class.h"
 
-ASTClass::ASTClass(ASTClassType *pType,ASTToken *pName,std::list<ASTClassType*> *pExtendList)
+#include <list>
+
+using namespace std;
+
+ASTClass::ASTClass(ASTClassType *pType,ASTToken *pName,list<ASTClassType*> *pExtendList)
     :ASTNode(NT_Class),pType(pType),pName(pName),pExtendList(pExtendList),pContent(nullptr)
 {
     //ctor
@@ -14,7 +18,7 @@ ASTClass::~ASTClass()
     //dtor
 }
 
-void ASTClass::setContent(std::list<ASTNode*> *pContent)
+void ASTClass::setContent(list<ASTNode*> *pContent)
 {
     this->pContent=pContent;
 }

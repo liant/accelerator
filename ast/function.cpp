@@ -1,6 +1,7 @@
 #include "function.h"
 
 #include "../modules/class.h"
+#include "../modules/interface.h"
 #include "../modules/classobject.h"
 #include "../modules/function.h"
 
@@ -24,24 +25,29 @@ ASTFunction::ASTFunction(ASTClassType *pType,ExpressionOverrideOperator orOperat
 ASTFunction::~ASTFunction()
 {
     //dtor
-        if(pType){
-            delete pType;
+    if(pType)
+    {
+        delete pType;
+    }
+    if(pParams)
+    {
+        for(auto item:*pParams)
+        {
+            delete item;
         }
-        if(pParams){
-            for(auto item:*pParams)
-            {
-                delete item;
-            }
-            delete pParams;
+        delete pParams;
+    }
+    if(!(functionAttribute&Attribute_Operator))
+    {
+        if(pName)
+        {
+            delete pName;
         }
-        if(!(functionAttribute&Attribute_Operator)){
-            if(pName){
-                delete pName;
-            }
-        }
-        if(pContent){
-            delete pContent;
-        }
+    }
+    if(pContent)
+    {
+        delete pContent;
+    }
 }
 
 void ASTFunction::setFunctionAttribute(Attribute attribute)
@@ -60,34 +66,53 @@ void ASTFunction::setParams(list<ASTClassObject*> *pParams)
 
 bool ASTFunction::codegen(Module *pModule)
 {
-    Class *pClass;
-    if(pModule->type!=Module_Class){
-        cout<<"函数父模块不是类模块."<<endl;
+
+    if(pModule->type!=Module_Class||pModule->type!=Module_Interface)
+    {
+        cout<<"函数父模块不是类或接口模块."<<endl;
         return false;
-    }
-    pClass=(Class*)pModule;
-    ////////////////////////////////
-    Function *pFun;
-    if(functionAttribute&Attribute_Operator){
-            cout<<"暂时不支持操作符号重载."<<endl;
-        return false;
-      //  pFun=pClass->createFunction(pName->toString());
-    }else{
-        pFun=pClass->createFunction(pName->toString());
     }
 
-    if(pFun){
+    ////////////////////////////////
+    Function *pFun;
+    if(functionAttribute&Attribute_Operator)
+    {
+        cout<<"暂时不支持操作符号重载."<<endl;
+        return false;
+        //  pFun=pClass->createFunction(pName->toString());
+    }
+    else
+    {
+        if(pModule->type==Module_Class)
+        {
+            Class *pClass;
+            pClass=(Class*)pModule;
+            pFun=pClass->createFunction(pName->toString());
+        }
+        else
+        {
+            Interface *pInterface;
+            pInterface=(Interface*)pModule;
+            pFun=pInterface->createFunction(pName->toString());
+        }
+
+    }
+
+    if(pFun)
+    {
         pFun->pType=pType->createModule();
         for(auto item:*pParams)
         {
             pFun->mParams.push_back(item->createModule());
         }
         pFun->attribute=(Attribute)(functionAttribute|attribute);
-        if(pFun->checkMuilt()){
+        if(pFun->checkMuilt())
+        {
             //函数重复
             return false;
         }
-        if(pContent){
+        if(pContent)
+        {
             pContent->codegen(pFun);
         }
         return true;

@@ -10,11 +10,13 @@ class Interface;
 class Function;
 class ClassObject;
 class Template;
+class Block;
 
 class Class:public Module
 {
     public:
         Class(std::string name,Template *pTemplate,Module *pParent,Protocol protocol);
+        Class(std::list<std::string> *pnamelist);
         virtual ~Class();
         ClassObject *createObject(std::string name);
         void deleteObject(std::string name);
@@ -23,6 +25,7 @@ class Class:public Module
         Module *selectChild(std::string name);
         ClassObject *selectObject(std::string name);
         Function *selectFunction(std::string name);
+        void setTemplateParam(std::list<ClassObject*> *pvaluelist,Block *pBlock);
         Class *pSuper;
         std::string name;
         Template *mTemplate;

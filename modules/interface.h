@@ -16,6 +16,7 @@ class Interface:public Module
         virtual ~Interface();
         std::string name;
         std::list<Class*> mExtendList;
+        Function *createFunction(std::string name);
         bool addFunction(Function *pFunction);
         Function *selectFunction(std::string name);
         Template *mTemplate;

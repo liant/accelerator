@@ -38,6 +38,7 @@ if(pModule->type!=Module_Block)
         for(auto item:*(pContent->pContent))
         {
             pRet=new ClassObject(pType,item->pName->toString(),pBlock,pContent->protocolType);
+            pRet->attribute=pContent->attribute;
             //指定数据
             pBlock->mData.push_back(pRet);
             //生成表达式数值

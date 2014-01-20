@@ -9,6 +9,7 @@ class ASTExpressionStatment:public ASTStatment
     public:
         ASTExpressionStatment(ASTExpression *pExpression);
         virtual ~ASTExpressionStatment();
+        bool codegen(Module *pModule);
     protected:
         ASTExpression *pExpression;
     private:

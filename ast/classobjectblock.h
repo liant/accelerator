@@ -6,11 +6,14 @@
 #include "classtype.h"
 #include <list>
 
+class Module;
+
 class ASTClassObjectBlock:public ASTNode
 {
     public:
         ASTClassObjectBlock(ASTClassType *pType,std::list<ASTClassObject*> *pContent);
         virtual ~ASTClassObjectBlock();
+        bool codegen(Module *pModule);
         ASTClassType *pType;
         std::list<ASTClassObject*> *pContent;
     protected:

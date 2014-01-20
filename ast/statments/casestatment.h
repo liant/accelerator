@@ -6,6 +6,8 @@
 
 #include <list>
 
+class Module;
+
 class ASTCaseStatment:public ASTStatment
 {
     public:
@@ -13,6 +15,7 @@ class ASTCaseStatment:public ASTStatment
         virtual ~ASTCaseStatment();
         void pushCases(ASTCaseStatment *pCase);
         void setContent(std::list<ASTStatment*> *pContent);
+        bool codegen(Module *pModule);
     protected:
         ASTExpression *pExpression;
         std::list<ASTCaseStatment*> *pCaseStatments;

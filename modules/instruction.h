@@ -9,9 +9,13 @@ enum MInstruction
     ////////////////////
     MI_Call,
     MI_Jmp,
-    MI_JmpZ,
+    MI_IfJmp,
     MI_JmpNZ,
     MI_Return,
+    MI_Continue,
+    MI_Break,
+    MI_Switch,
+    MI_Case,
     ////////////////////
     MI_Inc,
     MI_Dec,
