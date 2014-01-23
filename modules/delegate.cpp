@@ -1,9 +1,8 @@
 #include "delegate.h"
+#include "function.h"
 
-using namespace std;
-
-Delegate::Delegate(string name,Module *pParent,Protocol protocol)
-    :Module(Module_Delegate,pParent,name,protocol)
+Delegate::Delegate(Function *pfun)
+    :Module(Module_Delegate,pfun->getName(),Protocol_Protected,Attribute_None),pfun(pfun)
 {
     //ctor
 }
@@ -11,4 +10,13 @@ Delegate::Delegate(string name,Module *pParent,Protocol protocol)
 Delegate::~Delegate()
 {
     //dtor
+    /*
+    if(classType)
+        delete classType;
+    for(auto item:mParamList)
+    {
+        delete item;
+    }
+    mParamList.clear();
+    */
 }

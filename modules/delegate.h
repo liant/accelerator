@@ -1,22 +1,17 @@
 #ifndef MDELEGATE_H
 #define MDELEGATE_H
 
-#include "module.h"
+#include "../model/Module.h"
 
-#include <string>
-#include <list>
-
-class ClassObject;
-class Class;
+class Function;
 
 class Delegate:public Module
 {
     public:
-        Delegate(std::string name,Module *pParent,Protocol protocol);
+        Delegate(Function *pfun);
         virtual ~Delegate();
-        Class *classType;
-        std::list<ClassObject*> mParamList;
     protected:
+        Function *pfun;
     private:
 };
 

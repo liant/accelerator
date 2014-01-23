@@ -52,13 +52,12 @@ identifier             ({letter_char}|"_"){ident_char}*
 #include <stdio.h>
 //记号类型
 
-#include "../ast/ast.h"
 #include "tokentype.h"
+#include "../modules/token.h"
 #include "parser.parser.hh"
 
-
 #define NewTokenKey(x) { yylval.tokentype=x; return x;  }
-#define NewTokenValue(x) {yylval.token=new ASTToken(x,yytext); return x;}
+#define NewTokenValue(x) {globalToken.set(x,yytext); yylval.token=&globalToken; return x;}
 
 %}
 

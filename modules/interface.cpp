@@ -1,10 +1,9 @@
 #include "interface.h"
-#include "function.h"
 
 using namespace std;
 
-Interface::Interface(std::string name,Template *pTemplate,Module *pParent,Protocol protocol)
-    :Module(Module_Interface,pParent,name,protocol),mTemplate(pTemplate)
+Interface::Interface(string name,Template *pTemplate)
+    :Module(Module_Interface,name,Protocol_Protected,Attribute_None),pTemplate(pTemplate)
 {
     //ctor
 }
@@ -12,22 +11,15 @@ Interface::Interface(std::string name,Template *pTemplate,Module *pParent,Protoc
 Interface::~Interface()
 {
     //dtor
+    if(pTemplate)
+        delete pTemplate;
 }
-
-bool Interface::addFunction(Function *pFunction)
+/*
+Function *Interface::createFunction(std::string name)
 {
-    if(pFunction==nullptr){
-        return true;
-    }
-    for(auto item : mContent)
-    {
-        if(item->name==pFunction->name){
-
-            return item->pushMuilt(pFunction);
-        }
-    }
-    mContent.push_back(pFunction);
-    return true;
+    Function *pFun;
+    pFun=new Function(nullptr,name,this,Protocol_Protected);
+    return pFun;
 }
 
 Function *Interface::selectFunction(string name)
@@ -40,3 +32,4 @@ Function *Interface::selectFunction(string name)
     }
     return nullptr;
 }
+*/

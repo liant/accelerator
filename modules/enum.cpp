@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Enum::Enum(string name,Module *pParent,Protocol protocol)
-    :Module(Module_Enum,pParent,name,protocol),pSuper(nullptr),pExtend(nullptr),pSuperType(nullptr),pExtendType(nullptr),maxValue(0)
+Enum::Enum(Type *pSuper,string name,Type *pExtend)
+    :Module(Module_Enum,name,Protocol_Protected,Attribute_None),pSuper(pSuper),pExtend(pExtend)
 {
     //ctor
 }
@@ -11,8 +11,20 @@ Enum::Enum(string name,Module *pParent,Protocol protocol)
 Enum::~Enum()
 {
     //dtor
+    /*
+    if(pSuperType)
+        delete pSuperType;
+    if(pExtendType)
+        delete pExtendType;
+    for(auto item : mContentObject)
+    {
+        delete item;
+    }
+    mContentObject.clear();
+    */
 }
 
+/*
 bool Enum::addItem(string name)
 {
     if(pExtend){
@@ -115,3 +127,4 @@ uintptr_t Enum::autoMaxValue()
     maxValue++;
     return maxValue;
 }
+*/

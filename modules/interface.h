@@ -1,7 +1,7 @@
 #ifndef MINTERFACE_H
 #define MINTERFACE_H
 
-#include "module.h"
+#include "../model/Module.h"
 #include "template.h"
 
 #include <string>
@@ -12,16 +12,20 @@ class Function;
 class Interface:public Module
 {
     public:
-        Interface(std::string name,Template *pTemplate,Module *pParent,Protocol protocol);
+        Interface(std::string name,Template *pTemplate);
         virtual ~Interface();
+
+        Template *pTemplate;
+        /*
         std::string name;
         std::list<Class*> mExtendList;
         Function *createFunction(std::string name);
-        bool addFunction(Function *pFunction);
         Function *selectFunction(std::string name);
-        Template *mTemplate;
-    protected:
+
         std::list<Function*> mContent;
+        */
+    protected:
+
     private:
 };
 

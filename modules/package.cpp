@@ -1,9 +1,10 @@
 #include "package.h"
+#include "../model/Type.h"
 #include <iostream>
 using namespace std;
 
-Package::Package(string name,Module *pParent,Protocol protocol)
-    :Module(Module_Package,pParent,name,protocol)
+Package::Package(Protocol protocol,Type *name)
+    :Module(Module_Package,name->getLastName(),protocol,Attribute_None)
 {
     //ctor
 }
@@ -11,8 +12,12 @@ Package::Package(string name,Module *pParent,Protocol protocol)
 Package::~Package()
 {
     //dtor
+    /*
+    for(auto item:mContent)
+        delete item;
+    mContent.clear();*/
 }
-
+/*
 Package *Package::createPackage(string name)
 {
     if(selectChild(name)) {
@@ -137,3 +142,4 @@ Module *Package::selectChild(string name)
     }
     return nullptr;
 }
+*/

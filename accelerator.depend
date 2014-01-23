@@ -663,10 +663,10 @@
 
 1386279389 /home/xkaying/桌面/accelerator/accelerator/manager/packagemanager.h
 
-1389185515 source:/home/xkaying/桌面/accelerator/accelerator/parser/lexer.l
+1390479272 source:/home/xkaying/桌面/accelerator/accelerator/parser/lexer.l
 	<stdio.h>
-	"../ast/ast.h"
 	"tokentype.h"
+	"../modules/token.h"
 	"parser.parser.hh"
 
 1389004582 /home/xkaying/桌面/accelerator/accelerator/context/expressiontype.h
@@ -784,7 +784,8 @@
 1389182938 source:/home/xkaying/桌面/accelerator/accelerator/context/template.cpp
 	"template.h"
 
-1390243795 /home/xkaying/桌面/accelerator/accelerator/parser/parser.parser.hh
+1390479200 /home/xkaying/桌面/accelerator/accelerator/parser/parser.parser.hh
+	"../modules/common.h"
 
 1389184449 source:/home/xkaying/桌面/accelerator/accelerator/modules/mclass.cpp
 	"mclass.h"
@@ -797,7 +798,7 @@
 	<string>
 	<list>
 
-1389592147 /home/xkaying/桌面/accelerator/accelerator/modules/module.h
+1390290030 /home/xkaying/桌面/accelerator/accelerator/modules/module.h
 	"common.h"
 	<string>
 
@@ -922,11 +923,10 @@
 	"../expression.h"
 	"../classobjectblock.h"
 
-1390163207 source:/home/xkaying/桌面/accelerator/accelerator/parser/parser.y
-	"../ast/ast.h"
+1390476979 source:/home/xkaying/桌面/accelerator/accelerator/parser/parser.y
+	"../modules/common.h"
 	"tokentype.h"
 	<list>
-	<array>
 
 1389182742 source:/home/xkaying/桌面/accelerator/accelerator/context/block.cpp
 	"block.h"
@@ -1014,7 +1014,7 @@
 	"module.h"
 	<list>
 
-1390244182 /home/xkaying/桌面/accelerator/accelerator/modules/classobject.h
+1390289975 /home/xkaying/桌面/accelerator/accelerator/modules/classobject.h
 	"module.h"
 	<string>
 
@@ -1025,31 +1025,26 @@
 
 1390235040 /home/xkaying/桌面/accelerator/accelerator/modules/instruction.h
 
-1389711780 source:/home/xkaying/桌面/accelerator/accelerator/modules/class.cpp
+1390472429 source:/home/xkaying/桌面/accelerator/accelerator/modules/class.cpp
 	"class.h"
-	"classobject.h"
-	"function.h"
-	"interface.h"
 
-1390239675 /home/xkaying/桌面/accelerator/accelerator/modules/class.h
-	"module.h"
+1390472444 /home/xkaying/桌面/accelerator/accelerator/modules/class.h
+	"../model/Module.h"
 	<string>
 	<list>
 
-1389714117 /home/xkaying/桌面/accelerator/accelerator/modules/function.h
-	"module.h"
-	"block.h"
+1390476811 /home/xkaying/桌面/accelerator/accelerator/modules/function.h
+	"../model/Module.h"
 	<string>
 	<list>
 
-1390243723 /home/xkaying/桌面/accelerator/accelerator/modules/interface.h
-	"module.h"
+1390472128 /home/xkaying/桌面/accelerator/accelerator/modules/interface.h
+	"../model/Module.h"
 	"template.h"
 	<string>
 	<list>
 
-1389184838 /home/xkaying/桌面/accelerator/accelerator/modules/template.h
-	"classobject.h"
+1390470713 /home/xkaying/桌面/accelerator/accelerator/modules/template.h
 	<list>
 	<string>
 
@@ -1057,7 +1052,7 @@
 	"classobject.h"
 	"sstream"
 
-1390242122 source:/home/xkaying/桌面/accelerator/accelerator/ast/block.cpp
+1390289990 source:/home/xkaying/桌面/accelerator/accelerator/ast/block.cpp
 	"block.h"
 
 1390236105 /home/xkaying/桌面/accelerator/accelerator/ast/block.h
@@ -1325,7 +1320,7 @@
 	"../expression.h"
 	"../expressiontype.h"
 
-1390243696 source:/home/xkaying/桌面/accelerator/accelerator/ast/function.cpp
+1390290611 source:/home/xkaying/桌面/accelerator/accelerator/ast/function.cpp
 	"function.h"
 	"../modules/class.h"
 	"../modules/interface.h"
@@ -1345,7 +1340,7 @@
 	"function.h"
 	<list>
 
-1390241114 source:/home/xkaying/桌面/accelerator/accelerator/ast/literal.cpp
+1390244151 source:/home/xkaying/桌面/accelerator/accelerator/ast/literal.cpp
 	"literal.h"
 	"../modules/class.h"
 	"../modules/classobject.h"
@@ -1366,30 +1361,23 @@
 	"token.h"
 	<list>
 
-1389602649 /home/xkaying/桌面/accelerator/accelerator/modules/package.h
+1390471393 /home/xkaying/桌面/accelerator/accelerator/modules/package.h
 	<string>
 	<list>
-	"module.h"
-	"class.h"
-	"enum.h"
-	"interface.h"
-	"delegate.h"
-	"template.h"
+	"../model/Module.h"
 
-1389597161 /home/xkaying/桌面/accelerator/accelerator/modules/enum.h
-	"module.h"
+1390471977 /home/xkaying/桌面/accelerator/accelerator/modules/enum.h
+	"../model/Module.h"
 	<string>
 	<list>
 
-1389337079 /home/xkaying/桌面/accelerator/accelerator/modules/delegate.h
-	"module.h"
-	<string>
-	<list>
+1390473223 /home/xkaying/桌面/accelerator/accelerator/modules/delegate.h
+	"../model/Module.h"
 
 1389183408 source:/home/xkaying/桌面/accelerator/accelerator/ast/statment.cpp
 	"statment.h"
 
-1390233720 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/blockstatment.cpp
+1390289736 source:/home/xkaying/桌面/accelerator/accelerator/ast/statments/blockstatment.cpp
 	"blockstatment.h"
 	"../modules/expression.h"
 	"../modules/block.h"
@@ -1513,30 +1501,28 @@
 1389183202 source:/home/xkaying/桌面/accelerator/accelerator/ast/token.cpp
 	"token.h"
 
-1389337090 source:/home/xkaying/桌面/accelerator/accelerator/modules/delegate.cpp
+1390473337 source:/home/xkaying/桌面/accelerator/accelerator/modules/delegate.cpp
 	"delegate.h"
+	"function.h"
 
-1389597139 source:/home/xkaying/桌面/accelerator/accelerator/modules/enum.cpp
+1390471955 source:/home/xkaying/桌面/accelerator/accelerator/modules/enum.cpp
 	"enum.h"
 
 1389184838 source:/home/xkaying/桌面/accelerator/accelerator/modules/expression.cpp
 	"expression.h"
 
-1389338486 source:/home/xkaying/桌面/accelerator/accelerator/modules/function.cpp
+1390472824 source:/home/xkaying/桌面/accelerator/accelerator/modules/function.cpp
 	"function.h"
-	"class.h"
-	"block.h"
-	"module.h"
 
-1389337443 source:/home/xkaying/桌面/accelerator/accelerator/modules/interface.cpp
+1390472188 source:/home/xkaying/桌面/accelerator/accelerator/modules/interface.cpp
 	"interface.h"
-	"function.h"
 
-1389602598 source:/home/xkaying/桌面/accelerator/accelerator/modules/package.cpp
+1390471572 source:/home/xkaying/桌面/accelerator/accelerator/modules/package.cpp
 	"package.h"
+	"../model/Type.h"
 	<iostream>
 
-1389338901 source:/home/xkaying/桌面/accelerator/accelerator/modules/template.cpp
+1390470756 source:/home/xkaying/桌面/accelerator/accelerator/modules/template.cpp
 	"template.h"
 
 1389865545 /home/xkaying/桌面/accelerator/accelerator/ast/ast.h
@@ -1579,22 +1565,111 @@
 	"expressions/arrayexpression.h"
 	"expressions/declareexpression.h"
 
-1389715996 /home/xkaying/桌面/accelerator/accelerator/modules/common.h
+1390475204 /home/xkaying/桌面/accelerator/accelerator/modules/common.h
+	"moduletype.h"
+	"class.h"
+	"delegate.h"
+	"enum.h"
+	"function.h"
+	"interface.h"
+	"package.h"
+	"template.h"
+	"token.h"
+	"../model/Module.h"
+	"../model/Value.h"
+	"../model/Type.h"
+	"../model/Block.h"
+	"../model/Instruction.h"
+	"../model/AstInstructions.h"
+	"../model/Attribute.h"
+	"../model/Protocol.h"
+	"../log/Log.h"
 
-1389336531 /home/xkaying/桌面/accelerator/accelerator/modules/moduletype.h
+1390471307 /home/xkaying/桌面/accelerator/accelerator/modules/moduletype.h
 
 1389339150 source:/home/xkaying/桌面/accelerator/accelerator/libs/lang/class.cpp
 	"class.h"
 
 1389339131 /home/xkaying/桌面/accelerator/accelerator/libs/lang/class.h
 
-1389349149 source:/home/xkaying/桌面/accelerator/accelerator/codegen/llvmexpression.cpp
+1390477072 source:/home/xkaying/桌面/accelerator/accelerator/codegen/llvmexpression.cpp
 	"llvmexpression.h"
-	<llvm/IR/Instruction.h>
-	<llvm/IR/Instructions.h>
-	<llvm/IR/LLVMContext.h>
 
-1389341215 /home/xkaying/桌面/accelerator/accelerator/codegen/llvmexpression.h
-	"../modules/expression.h"
-	"../modules/context.h"
+1390477047 /home/xkaying/桌面/accelerator/accelerator/codegen/llvmexpression.h
+
+1390282387 source:/home/xkaying/桌面/accelerator/accelerator/error/Error.cpp
+	"Error.h"
+
+1390282387 /home/xkaying/桌面/accelerator/accelerator/error/Error.h
+
+1390282245 source:/home/xkaying/桌面/accelerator/accelerator/error/Tip.cpp
+	"Tip.h"
+
+1390282344 /home/xkaying/桌面/accelerator/accelerator/include/Tip.h
+
+1390283674 source:/home/xkaying/桌面/accelerator/accelerator/log/Log.cpp
+	"Log.h"
+
+1390283375 /home/xkaying/桌面/accelerator/accelerator/log/Log.h
+	"Logger.h"
+	<string>
+
+1390282453 /home/xkaying/桌面/accelerator/accelerator/log/Logger.h
+
+1390282433 source:/home/xkaying/桌面/accelerator/accelerator/log/Logger.cpp
+	"Logger.h"
+
+1390471139 source:/home/xkaying/桌面/accelerator/accelerator/model/Module.cpp
+	"Module.h"
+
+1390476846 /home/xkaying/桌面/accelerator/accelerator/model/Module.h
+	"Attribute.h"
+	"Protocol.h"
+	"../modules/moduletype.h"
+	<cstdint>
+	<string>
+	<list>
+
+1390385834 /home/xkaying/桌面/accelerator/accelerator/model/Attribute.h
+
+1390385963 /home/xkaying/桌面/accelerator/accelerator/model/Protocol.h
+
+1390384050 source:/home/xkaying/桌面/accelerator/accelerator/model/Instruction.cpp
+	"Instruction.h"
+
+1390475421 /home/xkaying/桌面/accelerator/accelerator/model/Instruction.h
+	<cstdint>
+
+1390471566 /home/xkaying/桌面/accelerator/accelerator/model/Type.h
+	<string>
+	<list>
+
+1390477477 source:/home/xkaying/桌面/accelerator/accelerator/modules/token.cpp
+	"token.h"
+
+1390477480 /home/xkaying/桌面/accelerator/accelerator/modules/token.h
+	"../parser/tokentype.h"
+	<string>
+
+1390476646 /home/xkaying/桌面/accelerator/accelerator/model/Value.h
+	<cstdint>
+	<string>
+
+1390477090 /home/xkaying/桌面/accelerator/accelerator/model/Block.h
+	<list>
+	<cstdint>
+
+1390475924 /home/xkaying/桌面/accelerator/accelerator/model/AstInstructions.h
+
+1390383193 source:/home/xkaying/桌面/accelerator/accelerator/model/Block.cpp
+	"Block.h"
+
+1390476662 source:/home/xkaying/桌面/accelerator/accelerator/model/Value.cpp
+	"Value.h"
+	<sstream>
+
+1390477270 source:/home/xkaying/桌面/accelerator/accelerator/model/Type.cpp
+	"Type.h"
+	"Value.h"
+	<string>
 

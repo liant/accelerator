@@ -1,12 +1,9 @@
 #include "class.h"
-#include "classobject.h"
-#include "function.h"
-#include "interface.h"
 
 using namespace std;
 
-Class::Class(std::string name,Template *pTemplate,Module *pParent,Protocol protocol)
-    :Module(Module_Class,pParent,name,protocol),pSuper(nullptr),name(name),mTemplate(pTemplate)
+Class::Class(Type *pSuper,string name,Template *pTemplate)
+    :Module(Module_Class,name,Protocol_Protected,Attribute_None),pSuper(pSuper),pTemplate(pTemplate)
 {
     //ctor
 }
@@ -17,54 +14,6 @@ Class::~Class()
 }
 
 /*
-bool Class::addFunction(Function *pFunction)
-{
-    if(pFunction->checkAttribute(Attribute_Set)) {
-        //在Object列表中添加set操作
-        for(auto item:mObject) {
-            if(item->name==pFunction->name) {
-                if(item->pSet) {
-                    return false;
-                }
-                item->pSet=pFunction;
-                return true;
-            }
-        }
-        //如果没有,则添加
-        ClassObject *pObject;
-        pObject=new ClassObject(pFunction->pType,pFunction->name,this,Protocol_Protected);
-        pObject->pSet=pFunction;
-        mObject.push_back(pObject);
-        return true;
-    }
-    if(pFunction->checkAttribute(Attribute_Get)) {
-        //在Object列表中添加set操作
-        for(auto item:mObject) {
-            if(item->name==pFunction->name) {
-                if(item->pGet) {
-                    return false;
-                }
-                item->pGet=pFunction;
-                return true;
-            }
-        }
-        //如果没有,则添加
-        ClassObject *pObject;
-        pObject=new ClassObject(pFunction->pType,pFunction->name,this,Protocol_Protected);
-        pObject->pGet=pFunction;
-        mObject.push_back(pObject);
-        return true;
-    }
-    //在当前函数中添加pFunction
-    for(auto item:mContent) {
-        if(item->name==pFunction->name) {
-            return item->pushMuilt(pFunction);
-        }
-    }
-    mContent.push_back(pFunction);
-    return true;
-}
-*/
 Module *Class::selectChild(string name)
 {
     for(auto item:mObject) {
@@ -80,6 +29,7 @@ Module *Class::selectChild(string name)
     return nullptr;
 }
 
+//class object 系列函数
 ClassObject *Class::selectObject(string name)
 {
     for(auto item:mObject) {
@@ -89,6 +39,45 @@ ClassObject *Class::selectObject(string name)
     }
     return nullptr;
 }
+ClassObject *Class::createObject(std::string name)
+{
+    if(selectObject(name)){
+        return nullptr;
+    }
+    ClassObject *pObject;
+    pObject=new ClassObject(nullptr,name,this,Protocol_Protected);
+    /////////////////////
+    Function *pfun;
+    pfun=selectFunction(name);
+    if(pfun==nullptr){
+        return pObject;
+    }
+    if(pfun->checkAttribute(Attribute_Get)){
+        pObject->pGet=pfun;
+    }
+    if(pfun->checkAttribute(Attribute_Set)){
+        pObject->pSet=pfun;
+    }
+    if((pObject->pGet==nullptr)&&(pObject->pSet==nullptr)){
+        delete pObject;
+        return nullptr;
+    }
+    return pObject;
+
+}
+
+void Class::deleteObject(string name)
+{
+    for(auto item:mObject) {
+        if(item->name==name) {
+            mObject->remove(item);
+            delete item;
+            return;
+        }
+    }
+}
+
+//function 系列函数
 Function *Class::selectFunction(string name)
 {
     for(auto item:mContent) {
@@ -98,3 +87,27 @@ Function *Class::selectFunction(string name)
     }
     return nullptr;
 }
+
+Function *Class::createFunction(string name)
+{
+    Function *pFun;
+    pFun=new Function(nullptr,name,this,Protocol_Protected);
+    return pFun;
+}
+//////////////模板函数
+void Class::setTemplateParam(list<ClassObject*> *pvaluelist,Block *pBlock)
+{
+
+}
+
+////////////////比较函数
+
+bool Class::operator ==(Class &opt)
+{
+
+}
+bool Class::operator !=(Class &opt)
+{
+    return !((*this)==opt)
+}
+*/

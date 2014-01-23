@@ -1,20 +1,24 @@
 #ifndef MTEMPLATE_H
 #define MTEMPLATE_H
 
-#include "classobject.h"
-
 #include <list>
 #include <string>
+
+class Value;
+class Type;
 
 class Template
 {
     public:
         Template();
         virtual ~Template();
-        bool pushParams(ClassObject *pObject);
-        ClassObject *selectParams(std::string name);
+        void setParams(std::list<Value*> *pParams);
+        void setExtend(std::list<Type*> *pExtendData);
     protected:
-        std::list<ClassObject*> mContent;
+        //模板参数数据
+        std::list<Value*> *pParams;
+        //模板的扩展携带数据,跟该模板无关
+        std::list<Type*> *pExtendData;
     private:
 };
 

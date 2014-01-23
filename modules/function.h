@@ -1,30 +1,33 @@
 #ifndef MFUNCTION_H
 #define MFUNCTION_H
 
-#include "module.h"
-#include "block.h"
+#include "../model/Module.h"
 
 #include <string>
 #include <list>
 
-class Class;
-class FunctionBase;
+class Type;
+class Value;
 
 class Function:public Module
 {
     public:
-        Function(Class *pType,std::string name,Module *pParent,Protocol protocol);
+        Function(Type *pType,std::string name);
+        Function(Type *pType,int oper);
         virtual ~Function();
+        void setParams(std::list<Value*> *pParams);
+        void setFunctionAttribute(Attribute fattribute);
+        Type *pType;
+        std::list<Value*> *pParams;
+        /*
         //插入同名不同参数函数
-        bool pushMuilt(Function *pFunction);
         bool checkMuilt();
-        bool setContent(Block *pContent);
+        bool setContent(ClassObject *pContent);
         Class *pType;
         std::list<ClassObject *> mParams;
-        Block *pContent;
+        ClassObject *pContent;*/
     protected:
-
-        std::list<FunctionBase*> mExtends;
+      //  Function *mNext; //下一个函数指针
     private:
 };
 

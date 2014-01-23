@@ -1,38 +1,27 @@
 #ifndef COMMON_H_INCLUDED
 #define COMMON_H_INCLUDED
 
-enum ModuleType
-{
-    Module_Package,
-    Module_Class,
-    Module_ClassObject,
-    Module_Interface,
-    Module_Delegate,
-    Module_Enum,
-    Module_Function,
-    Module_Statment,
-    Module_Expression,
-    Module_Block,
-};
+#include "moduletype.h"
+#include "class.h"
+#include "delegate.h"
+#include "enum.h"
+#include "function.h"
+#include "interface.h"
+#include "package.h"
+#include "template.h"
+#include "token.h"
 
-//模块开放性
-enum Protocol
-{
-    Protocol_Public,
-    Protocol_Protected,
-    Protocol_Private,
-};
+#include "../model/Module.h"
+#include "../model/Value.h"
+#include "../model/Type.h"
+#include "../model/Block.h"
+#include "../model/Instruction.h"
+#include "../model/AstInstructions.h"
+#include "../model/Attribute.h"
+#include "../model/Protocol.h"
 
-enum Attribute
-{
-    Attribute_None=0,
-    Attribute_Static=1,
-    Attribute_Const=2,
-    Attribute_Virtual=4,
-    Attribute_Final=8,
-    Attribute_Set=16,
-    Attribute_Get=32,
-    Attribute_Operator=64,
-};
+#include "../log/Log.h"
+
+
 
 #endif // COMMON_H_INCLUDED

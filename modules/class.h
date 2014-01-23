@@ -1,40 +1,45 @@
 #ifndef MCLASS_H
 #define MCLASS_H
 
-#include "module.h"
+#include "../model/Module.h"
 
 #include <string>
 #include <list>
 
-class Interface;
-class Function;
-class ClassObject;
 class Template;
 class Block;
+class Type;
 
 class Class:public Module
 {
     public:
-        Class(std::string name,Template *pTemplate,Module *pParent,Protocol protocol);
-        Class(std::list<std::string> *pnamelist);
+        Class(Type *pSuper,std::string name,Template *pTemplate);
         virtual ~Class();
+        Type *pSuper;
+        Template *pTemplate;
+        /*
+        bool operator ==(Class &opt);
+        bool operator !=(Class &opt);
         ClassObject *createObject(std::string name);
         void deleteObject(std::string name);
         Function *createFunction(std::string name);
-        void deleteFunction(std::string name);
         Module *selectChild(std::string name);
         ClassObject *selectObject(std::string name);
         Function *selectFunction(std::string name);
         void setTemplateParam(std::list<ClassObject*> *pvaluelist,Block *pBlock);
+        //父类
         Class *pSuper;
-        std::string name;
+        //当前模板
         Template *mTemplate;
+        //扩展接口
         std::list<Class*> mExtend;
-    protected:
         //对象列表
         std::list<ClassObject*> mObject;
         //函数列表
         std::list<Function*> mContent;
+        */
+    protected:
+
     private:
 };
 
