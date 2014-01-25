@@ -15,12 +15,13 @@ class Type
         void addArgumentList(std::list<Value*> *pArgumentList);
         void addArgument(Value *pArgument);
         std::string getLastName();
+        bool operator == (Type &ptype);
+        std::list<std::string> mName;
     protected:
         //类型名字
-        std::list<std::string> mName;
-        //类型的操作对象
-        void *type;
+
         std::list<Value*> *pArgumentList;
+        ////////////////////////////////
     private:
 };
 

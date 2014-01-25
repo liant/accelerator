@@ -10,6 +10,7 @@ class Instruction
     public:
         Instruction(uintptr_t instruction,Value *pret,Value *popt1,Value *popt2);
         virtual ~Instruction();
+        void clear();
         uintptr_t instruction;
         Value *pret;
         Value *popt1;

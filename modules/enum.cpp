@@ -1,9 +1,13 @@
 #include "enum.h"
+#include "../model/Type.h"
+#include "../model/Context.h"
+
+#include <cassert>
 
 using namespace std;
 
 Enum::Enum(Type *pSuper,string name,Type *pExtend)
-    :Module(Module_Enum,name,Protocol_Protected,Attribute_None),pSuper(pSuper),pExtend(pExtend)
+    :Module(Module_Enum,name),pSuper(pSuper),pExtend(pExtend)
 {
     //ctor
 }
@@ -11,6 +15,11 @@ Enum::Enum(Type *pSuper,string name,Type *pExtend)
 Enum::~Enum()
 {
     //dtor
+    if(pSuper)
+        delete pSuper;
+    if(pExtend)
+        delete pExtend;
+
     /*
     if(pSuperType)
         delete pSuperType;
@@ -22,6 +31,12 @@ Enum::~Enum()
     }
     mContentObject.clear();
     */
+}
+
+void Enum::build(Context *pContext)
+{
+    assert(pContext);
+    new Context(this,pContext);
 }
 
 /*

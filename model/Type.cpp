@@ -35,6 +35,7 @@ void Type::addArgumentList(list<Value*> *pArgumentList)
         {
             addArgument(item);
         }
+        delete pArgumentList;
     }
 }
 
@@ -46,4 +47,18 @@ void Type::addArgument(Value *pArgument)
         return;
     }
     pArgumentList->push_back(pArgument);
+}
+
+string Type::getLastName()
+{
+    return mName.back();
+}
+
+bool Type::operator == (Type &ptype)
+{
+    if(mName.size()==ptype.mName.size()){
+        return true;
+    }
+    return false;
+
 }

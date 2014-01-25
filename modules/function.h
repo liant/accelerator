@@ -9,16 +9,18 @@
 class Type;
 class Value;
 
+
 class Function:public Module
 {
     public:
-        Function(Type *pType,std::string name);
-        Function(Type *pType,int oper);
+        Function(Type *pType,std::string name,std::list<Value*> *pParams);
+        Function(Type *pType,uintptr_t oper,std::list<Value*> *pParams);
         virtual ~Function();
-        void setParams(std::list<Value*> *pParams);
         void setFunctionAttribute(Attribute fattribute);
         Type *pType;
-        std::list<Value*> *pParams;
+        std::list<Value*> mParams;
+        Attribute fattribute;
+        void build(Context *pContext);
         /*
         //插入同名不同参数函数
         bool checkMuilt();
@@ -27,6 +29,8 @@ class Function:public Module
         std::list<ClassObject *> mParams;
         ClassObject *pContent;*/
     protected:
+        uintptr_t functionType;
+        std::string funName;
       //  Function *mNext; //下一个函数指针
     private:
 };

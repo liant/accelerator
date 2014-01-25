@@ -17,6 +17,7 @@ class Class:public Module
         virtual ~Class();
         Type *pSuper;
         Template *pTemplate;
+        void build(Context *pContext);
         /*
         bool operator ==(Class &opt);
         bool operator !=(Class &opt);

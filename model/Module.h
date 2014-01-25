@@ -13,11 +13,11 @@
 #include <list>
 
 class Block;
-
+class Context;
 class Module
 {
     public:
-        Module(ModuleType moduletype,std::string name,Protocol protocol,Attribute attribute);
+        Module(ModuleType moduletype,std::string name,Protocol protocol=Protocol_Protected,Attribute attribute=Attribute_None);
         Module();
         virtual ~Module();
         void addModules(std::list<Module*> *pModules);
@@ -25,6 +25,9 @@ class Module
         void setProtocol(Protocol protocol);
         void setAttribute(Attribute attribute);
         std::string getName();
+        virtual void build(Context *pContext);
+        ModuleType getModuleType();
+        bool isEmpty();
     protected:
         //模块开放权限
         Protocol protocol;
@@ -34,8 +37,8 @@ class Module
         std::string name;
         //当前模块的块
         Block *pBlock;
-        //模块的扩展信息和其他
-        void *data;
+        std::list<Module*> mChildren;
+        ModuleType moduleType;
     private:
 };
 

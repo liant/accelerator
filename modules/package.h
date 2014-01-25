@@ -14,9 +14,10 @@ class Package:public Module
         Package(Protocol protocol,Type *name);
         virtual ~Package();
         void addImports(std::list<Type*> *pImports);
+        void build(Context *pContext);
     protected:
-        Type *name;
-        std::list<Type*> *pImports;
+        Type *packagename;
+        std::list<Type*> mImports;
     private:
 };
 

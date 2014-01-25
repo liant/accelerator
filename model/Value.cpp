@@ -24,6 +24,21 @@ Value::Value(Type *pType,string data,intptr_t size)
     name+=snum.str();
 }
 
+Value::Value(Type *pType,std::string name)
+:type(pType),name(name),data(nullptr),size(0),readOnly(false),datagen(false)
+{
+    stringstream snum;
+    snum<<maxid++;
+    name+=snum.str();
+}
+
+Value::Value()
+:type(nullptr),name("@object_"),data(nullptr),size(0),readOnly(false),datagen(false)
+{
+
+}
+
+
 Value::~Value()
 {
     //dtor

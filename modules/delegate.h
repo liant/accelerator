@@ -10,6 +10,7 @@ class Delegate:public Module
     public:
         Delegate(Function *pfun);
         virtual ~Delegate();
+        void build(Context *pContext);
     protected:
         Function *pfun;
     private:

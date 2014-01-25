@@ -96,7 +96,7 @@
 %type <value> function_parameter function_parameter_argument_opt
 
 %type <instruction> statement declaration_statement embedded_statement block_statment expression_statement statement_expression
-%type <instructionList> statement_list_opt statement_list 
+%type <instructionList> statement_list_opt statement_list
 %type <value> local_variable_declaration variable_declarator variable_initializer
 %type <valueList> variable_declarators array_initializer variable_initializer_list_opt variable_initializer_list
 
@@ -382,9 +382,9 @@ function_declaration
   ;
 function_header
   : type function_attribute_opt Token_Identify TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
-    {$$=new Function($1,$3->toString()); $$->setFunctionAttribute($2); $$->setParams($5);}
+    {$$=new Function($1,$3->toString(),$5); $$->setFunctionAttribute($2);}
   | type TokenKey_Operator operator_override TokenOpt_LeftBracket function_parameter_list TokenOpt_RightBracket
-    {$$=new Function($1,$3); $$->setParams($5);}
+    {$$=new Function($1,$3,$5); }
   ;
 function_attribute_opt
   : {$$=Attribute_None;}
@@ -433,7 +433,7 @@ declaration_statement
   { Value *pv; pv=new Value(); pv->data=(void*)$1; $$=new Instruction(AI_Declare,$2,pv,nullptr);}
   ;
 local_variable_declaration
-  :  class_type variable_declarators { Type *vType=new Type("@array"); Value *pv; pv=new Value(vType,$2,0); $$=pv; for(auto item:*$2) item->setType($1);}
+  :  class_type variable_declarators { Type *vType=new Type("@array"); Value *pv; pv=new Value(vType,$2,0); $$=pv; for(auto item:*$2) item->type=$1;}
   ;
 variable_declarators
   : variable_declarator {$$=new list<Value*>(); $$->push_back($1);}

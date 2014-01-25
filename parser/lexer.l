@@ -53,8 +53,37 @@ identifier             ({letter_char}|"_"){ident_char}*
 //记号类型
 
 #include "tokentype.h"
-#include "../modules/token.h"
-#include "parser.parser.hh"
+#include "../modules/common.h"
+
+typedef union YYSTYPE YYSTYPE;
+union YYSTYPE
+{
+    Package *package;
+    Enum *pEnum;
+    Template *pTemplate;
+    Class *pClass;
+    Interface *interface;
+    Delegate *delegate;
+    Token *token;
+    Function *function;
+
+    Type *type;
+   std::list<Type*> *typeList;
+    Value *value;
+   std::list<Value*> *valueList;
+    Module *module;
+    std::list<Module*> *moduleList;
+    Block *block;
+   Instruction *instruction;
+   std::list<Instruction*> *instructionList;
+
+     Protocol protocol;
+     TokenType tokentype;
+     Attribute attribute;
+    AstInstructions ast_operator;
+};
+
+extern YYSTYPE yylval;
 
 #define NewTokenKey(x) { yylval.tokentype=x; return x;  }
 #define NewTokenValue(x) {globalToken.set(x,yytext); yylval.token=&globalToken; return x;}

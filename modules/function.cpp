@@ -1,16 +1,58 @@
 #include "function.h"
+#include "../model/Value.h"
+#include "../model/Type.h"
+#include "../model/Context.h"
+#include "../model/Block.h"
 
+#include <cassert>
 
 using namespace std;
 
-Function::Function(Type *pType,string name)
-    :Module(Module_Function,name,Protocol_Protected,Attribute_None),pType(pType)
+Function::Function(Type *pType,string name,list<Value*> *pParams)
+    :pType(pType),functionType(0)
 {
     //ctor
+    if(pParams)
+    {
+        for(auto item:*pParams)
+        {
+            mParams.push_back(item);
+            name+="@";
+            for(auto node:item->type->mName)
+            name+=node;
+        }
+        delete pParams;
+    }
+    Module(Module_Function,name);
+
+}
+
+Function::Function(Type *pType,uintptr_t oper,list<Value*> *pParams)
+    :pType(pType),functionType(oper)
+{
+    //ctor
+    string name("@operator");
+    if(pParams)
+    {
+        for(auto item:*pParams)
+        {
+            mParams.push_back(item);
+            name+="@";
+            for(auto node:item->type->mName)
+            name+=node;
+        }
+        delete pParams;
+    }
+    Module(Module_Function,name);
 }
 
 Function::~Function()
 {
+    if(pType)
+            delete pType;
+    for(auto item:mParams)
+        delete item;
+    mParams.clear();
     //dtor
     /*
     if(pType)
@@ -20,6 +62,28 @@ Function::~Function()
     for(auto item:mParams)
         delete item;
     mParams.clear();*/
+}
+
+void Function::setFunctionAttribute(Attribute fattribute)
+{
+    this->fattribute=fattribute;
+}
+
+void Function::build(Context *pContext)
+{
+    assert(pContext);
+    attribute=(Attribute)(attribute|fattribute);
+    if(!isEmpty()){
+        Context *pFunction;
+        pFunction=new Context(this,pContext);
+        //为当前环境建立相关value值,用于传入参数和传出参数
+        for(auto item :mParams)
+        {
+            pBlock->addValue(item);
+        }
+        //建立当前环境
+        pBlock->build(pFunction);
+    }
 }
 
 /*

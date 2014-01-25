@@ -16,7 +16,7 @@ class Enum:public Module
         Type *pSuper;
         Type *pExtend;
        // std::list<ClassObject*> mContentObject;
-
+        void build(Context *pContext);
     protected:
     private:
 };

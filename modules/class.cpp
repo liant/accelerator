@@ -1,9 +1,12 @@
 #include "class.h"
+#include "template.h"
+
+#include "../model/Type.h"
 
 using namespace std;
 
 Class::Class(Type *pSuper,string name,Template *pTemplate)
-    :Module(Module_Class,name,Protocol_Protected,Attribute_None),pSuper(pSuper),pTemplate(pTemplate)
+    :Module(Module_Class,name),pSuper(pSuper),pTemplate(pTemplate)
 {
     //ctor
 }
@@ -11,8 +14,60 @@ Class::Class(Type *pSuper,string name,Template *pTemplate)
 Class::~Class()
 {
     //dtor
+    if(pSuper)
+        delete pSuper;
+    if(pTemplate)
+        delete pTemplate;
 }
+void Class::build(Context *pContext)
+{
+    assert(pContext);
+    Context *pClass;
+    pClass=new Context(this,pContext);
+    //对class下的模块重新进行整理和规划,变量放入到pBlock中,函数放在mchildren
+    if(pBlock){
+        //
+        Log::trace("指针溢出.\n");
+    }
+    pBlock=new Block();
 
+    Module *item;
+
+    int size=mChildren.size();
+    for(int i=0;i<size;i++)
+    {
+        item=mChildren.pop_front();
+        switch(item->getModuleType())
+        {
+            case Module_None:{
+                //表示是使用Block
+                for(auto node:item->pBlock)
+                {
+                    pBlock->addValue(node);
+                }
+            }
+            case Module_Function:{
+                //表示是使用函数
+            }
+        }
+    }
+
+    //检查变量名是否重复
+
+    //检查接口列表中,是否实现了该函数
+
+    if(pBlock)
+    {
+        pBlock->build(pClass);
+    }
+
+
+    for(auto item:mChildren)
+    {
+        item->build(pClass);
+    }
+
+}
 /*
 Module *Class::selectChild(string name)
 {

@@ -4,7 +4,7 @@
 enum AstInstructions
 {
     ////////////////////
-    AI_Push,
+    AI_Push=1,
     AI_Pop,
     ////////////////////
     AI_Call,

@@ -65,8 +65,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="codegen/llvmexpression.cpp" />
-		<Unit filename="codegen/llvmexpression.h" />
 		<Unit filename="error/Error.cpp" />
 		<Unit filename="error/Error.h" />
 		<Unit filename="error/Tip.cpp" />
@@ -82,6 +80,10 @@
 		<Unit filename="model/Attribute.h" />
 		<Unit filename="model/Block.cpp" />
 		<Unit filename="model/Block.h" />
+		<Unit filename="model/Builder.cpp" />
+		<Unit filename="model/Builder.h" />
+		<Unit filename="model/Context.cpp" />
+		<Unit filename="model/Context.h" />
 		<Unit filename="model/Instruction.cpp" />
 		<Unit filename="model/Instruction.h" />
 		<Unit filename="model/Module.cpp" />

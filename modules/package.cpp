@@ -1,10 +1,13 @@
 #include "package.h"
 #include "../model/Type.h"
+#include "../model/Context.h"
+
 #include <iostream>
+#include <cassert>
 using namespace std;
 
 Package::Package(Protocol protocol,Type *name)
-    :Module(Module_Package,name->getLastName(),protocol,Attribute_None)
+    :Module(Module_Package,name->getLastName(),protocol,Attribute_None),packagename(name)
 {
     //ctor
 }
@@ -16,7 +19,38 @@ Package::~Package()
     for(auto item:mContent)
         delete item;
     mContent.clear();*/
+    if(packagename)
+        delete packagename;
+    for (auto item:mImports)
+        delete item;
+    mImports.clear();
 }
+
+void Package::addImports(std::list<Type*> *pImports)
+{
+    if(pImports){
+        for(auto item:*pImports)
+            mImports.push_back(item);
+    }
+}
+//建立设备上下文
+void Package::build(Context *pContext)
+{
+    assert(pContext);
+    Context *pctt;
+    pctt=new Context(this,pContext);
+    //添加当前包的环境
+    for(auto item:mImports)
+    {
+        pctt->addContext(Context::loadContext(item));
+    }
+    //为当前包的每个子模块建立代码
+    for(auto item:mChildren)
+    {
+        item->build(pctt);
+    }
+}
+
 /*
 Package *Package::createPackage(string name)
 {

@@ -16,6 +16,7 @@ class Interface:public Module
         virtual ~Interface();
 
         Template *pTemplate;
+        void build(Context *pContext);
         /*
         std::string name;
         std::list<Class*> mExtendList;
@@ -25,7 +26,7 @@ class Interface:public Module
         std::list<Function*> mContent;
         */
     protected:
-
+        std::list<Interface*> mExtendList;
     private:
 };
 

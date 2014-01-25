@@ -16,7 +16,6 @@ class Value
         virtual ~Value();
         void setReadOnly();
         void clearReadOnly();
-        void setType(Type *type);
         Type *type; //value类型
         std::string name;
         void *data; //value 值
