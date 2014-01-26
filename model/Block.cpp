@@ -23,25 +23,45 @@ Block::~Block()
 //在当前块中插入新值
 void Block::addValue(Value *pValue)
 {
-    if(pValue){
+    if(pValue) {
         mValues.push_back(pValue);
     }
 }
 //在当前快中插入新指令
 void Block::addInstruction(Instruction *pInstruction)
 {
-    if(pInstruction){
+    if(pInstruction) {
         mInstructions.push_back(pInstruction);
     }
 }
 bool Block::checkValue(string name)
 {
-    for(auto item:mValues)
-    {
-        if(item->name==name){
+    for(auto item:mValues) {
+        if(item->name==name) {
             return true;
         }
     }
     return false;
+}
+
+void Block::build(Context *pContext)
+{
+    for(auto item:mValues)
+        item->build(pContext);
+    for(auto item:mInstructions)
+    {
+        switch(item->instruction)
+        {
+            /*
+            case :{
+
+            }
+            default: Log::error("未知的指令.");
+            */
+
+        }
+       // item->build(pContext);
+    }
+
 }
 

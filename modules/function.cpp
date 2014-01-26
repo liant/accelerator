@@ -9,7 +9,7 @@
 using namespace std;
 
 Function::Function(Type *pType,string name,list<Value*> *pParams)
-    :pType(pType),functionType(0)
+    :pType(pType),functionType(0),funName(name)
 {
     //ctor
     if(pParams)

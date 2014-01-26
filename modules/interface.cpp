@@ -33,7 +33,7 @@ void Interface::build(Context *pContext)
             //可能造成context内存泄漏
             pc=Context::loadContext(item);
             pModule=pc->getModule();
-            if(pModule->getModuleType()==Module_Interface){
+            if(pModule->moduleType==Module_Interface){
                 mExtendList.push_back((Interface*)pModule);
             }else{
                 Log::error("错误的接口继承.");
@@ -45,7 +45,7 @@ void Interface::build(Context *pContext)
     //检查该interface内容.如果模块内容不为空,则表示该模块出错
     for(auto item:mChildren)
     {
-        if(item->getModuleType()==Module_Function){
+        if(item->moduleType==Module_Function){
             if(!item->isEmpty()){
                 Log::warn("错误的接口成员,函数不为空.函数内容自动忽略.");
             }

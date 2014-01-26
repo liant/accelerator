@@ -1,4 +1,5 @@
 #include "Value.h"
+#include "../log/Log.h"
 
 #include <sstream>
 
@@ -42,6 +43,9 @@ Value::Value()
 Value::~Value()
 {
     //dtor
+    if(type){
+        delete type;
+    }
 }
 
 void Value::setReadOnly()
@@ -52,4 +56,15 @@ void Value::setReadOnly()
 void Value::clearReadOnly()
 {
     readOnly=false;
+}
+
+void Value::build(Context *pContext)
+{
+    //载入一个对象,可能是类 枚举 委托 或者接口
+//    pObject=pContext->loadObject(type);
+    if(pObject==nullptr){
+        //没有该类型的对象
+        Log::error("错误的值类型.");
+    }
+    //根据pObject的初始化函数,来构造类的对象.
 }

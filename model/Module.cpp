@@ -68,3 +68,19 @@ string Module::getName()
 {
     return name;
 }
+
+void Module::build(Context *pContext)
+{
+
+}
+
+bool Module::isEmpty()
+{
+    if(pBlock){
+        return false;
+    }
+    if(mChildren.size()>0){
+        return false;
+    }
+    return true;
+}

@@ -2,6 +2,13 @@
 #include "template.h"
 
 #include "../model/Type.h"
+#include "../model/Value.h"
+#include "../model/Block.h"
+#include "../model/Context.h"
+#include "function.h"
+#include "../log/Log.h"
+
+#include <cassert>
 
 using namespace std;
 
@@ -19,54 +26,115 @@ Class::~Class()
     if(pTemplate)
         delete pTemplate;
 }
+
+//检查是否有同名的项
+bool Class::checkValue(Value *pValue)
+{
+    if(pBlock) {
+        if(pBlock->checkValue(pValue->name))
+            return true;
+    }
+    for(auto item:mChildren) {
+        Function *pfun;
+        pfun=(Function*)item;
+        if(pfun->funName==pValue->name) {
+            if(pfun->fattribute&Attribute_Set) {
+                return false;
+            }
+            if(pfun->fattribute&Attribute_Get) {
+                return false;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Class::checkFunction(Function *pfun)
+{
+    if(pBlock) {
+        if(pBlock->checkValue(pfun->funName)) {
+            if(pfun->fattribute&Attribute_Set) {
+                return false;
+            }
+            if(pfun->fattribute&Attribute_Get) {
+                return false;
+            }
+            return true;
+        }
+    }
+    for(auto item:mChildren) {
+        if(pfun->getName()==item->getName()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//调整模块
+void Class::adjustModule(Module *pModule)
+{
+    switch(pModule->moduleType) {
+    case Module_None: {
+        //表示是使用Block
+        if(pModule->pBlock) {
+            for(auto node:pModule->pBlock->mValues) {
+                if(checkValue(node)) {
+                    Log::error("变量名重复.\n");
+                } else {
+                    pBlock->addValue(node);
+                }
+
+            }
+        }
+
+        for(auto item:(pModule->mChildren)) {
+            adjustModule(item);
+        }
+        break;
+    }
+    case Module_Function: {
+        //表示是使用函数
+        if(checkFunction((Function*)pModule)) {
+            Log::error("函数名重复.\n");
+        } else {
+            mChildren.push_back(pModule);
+        }
+        break;
+    }
+    default :
+        Log::error("错误的模块类型.\n");
+        break;
+    }
+}
+
 void Class::build(Context *pContext)
 {
     assert(pContext);
     Context *pClass;
     pClass=new Context(this,pContext);
     //对class下的模块重新进行整理和规划,变量放入到pBlock中,函数放在mchildren
-    if(pBlock){
+    if(pBlock) {
         //
         Log::trace("指针溢出.\n");
     }
     pBlock=new Block();
-
-    Module *item;
-
-    int size=mChildren.size();
-    for(int i=0;i<size;i++)
-    {
-        item=mChildren.pop_front();
-        switch(item->getModuleType())
-        {
-            case Module_None:{
-                //表示是使用Block
-                for(auto node:item->pBlock)
-                {
-                    pBlock->addValue(node);
-                }
-            }
-            case Module_Function:{
-                //表示是使用函数
-            }
-        }
+    //把module进行转移
+    list<Module*> moduleList;
+    moduleList.assign(mChildren.begin(),mChildren.end());
+    mChildren.clear();
+    for(auto item:moduleList) {
+        adjustModule(item);
     }
-
-    //检查变量名是否重复
-
-    //检查接口列表中,是否实现了该函数
-
-    if(pBlock)
-    {
+    //建立类的变量空间
+    if(pBlock) {
         pBlock->build(pClass);
     }
-
-
-    for(auto item:mChildren)
-    {
+    //建立函数的代码空间
+    for(auto item:mChildren) {
         item->build(pClass);
     }
-
+    moduleList.clear();
 }
 /*
 Module *Class::selectChild(string name)
@@ -166,3 +234,4 @@ bool Class::operator !=(Class &opt)
     return !((*this)==opt)
 }
 */
+

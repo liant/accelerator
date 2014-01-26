@@ -21,10 +21,12 @@ class Block
         void addInstruction(Instruction *pInstruction);
         void build(Context *pContext);
         bool checkValue(std::string name);
-    protected:
-        //值列表,用于存放各种值
+         //值列表,用于存放各种值
         std::list<Value*> mValues;
         std::list<Instruction*> mInstructions; //语句列表
+
+    protected:
+
     private:
 };
 

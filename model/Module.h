@@ -26,10 +26,9 @@ class Module
         void setAttribute(Attribute attribute);
         std::string getName();
         virtual void build(Context *pContext);
-        ModuleType getModuleType();
+        Block *getBlock();
         bool isEmpty();
-    protected:
-        //模块开放权限
+         //模块开放权限
         Protocol protocol;
         //模块属性
         Attribute attribute;
@@ -39,6 +38,9 @@ class Module
         Block *pBlock;
         std::list<Module*> mChildren;
         ModuleType moduleType;
+    protected:
+
+
     private:
 };
 

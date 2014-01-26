@@ -21,6 +21,7 @@ class Function:public Module
         std::list<Value*> mParams;
         Attribute fattribute;
         void build(Context *pContext);
+
         /*
         //插入同名不同参数函数
         bool checkMuilt();
@@ -28,9 +29,11 @@ class Function:public Module
         Class *pType;
         std::list<ClassObject *> mParams;
         ClassObject *pContent;*/
+
+        std::string funName;
     protected:
         uintptr_t functionType;
-        std::string funName;
+
       //  Function *mNext; //下一个函数指针
     private:
 };

@@ -24,3 +24,4 @@ void Instruction::clear()
     popt1=nullptr;
     popt2=nullptr;
 }
+

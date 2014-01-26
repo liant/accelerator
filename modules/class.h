@@ -9,6 +9,8 @@
 class Template;
 class Block;
 class Type;
+class Value;
+class Function;
 
 class Class:public Module
 {
@@ -40,7 +42,9 @@ class Class:public Module
         std::list<Function*> mContent;
         */
     protected:
-
+        bool checkValue(Value *pValue);
+        bool checkFunction(Function *pfun);
+        void adjustModule(Module *pModule);
     private:
 };
 

@@ -5,7 +5,8 @@
 #include <string>
 
 class Type;
-
+typedef void * Object;
+class Context;
 class Value
 {
     public:
@@ -17,10 +18,14 @@ class Value
         void setReadOnly();
         void clearReadOnly();
         Type *type; //value类型
+        Object *pObject; //value的真实类型
         std::string name;
         void *data; //value 值
         intptr_t size; //value大小
         bool readOnly;
+        ////////////////////////////
+        void build(Context *pContext);
+
 protected:
         static uintptr_t maxid;
         std::string virtualData; //虚拟值等待转换
