@@ -30,6 +30,8 @@
 					<Add directory="error" />
 					<Add directory="log" />
 					<Add directory="model" />
+					<Add directory="files" />
+					<Add directory="meta" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -55,6 +57,8 @@
 					<Add directory="error" />
 					<Add directory="log" />
 					<Add directory="model" />
+					<Add directory="files" />
+					<Add directory="meta" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -68,6 +72,14 @@
 		<Unit filename="error/Error.cpp" />
 		<Unit filename="error/Error.h" />
 		<Unit filename="error/Tip.cpp" />
+		<Unit filename="files/FileHeader.cpp" />
+		<Unit filename="files/FileHeader.h" />
+		<Unit filename="files/ObjectFile.cpp" />
+		<Unit filename="files/ObjectFile.h" />
+		<Unit filename="files/PackageFile.cpp" />
+		<Unit filename="files/PackageFile.h" />
+		<Unit filename="files/Version.cpp" />
+		<Unit filename="files/Version.h" />
 		<Unit filename="include/Tip.h" />
 		<Unit filename="libs/lang/class.cpp" />
 		<Unit filename="libs/lang/class.h" />
@@ -76,6 +88,12 @@
 		<Unit filename="log/Logger.cpp" />
 		<Unit filename="log/Logger.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="meta/Meta.cpp" />
+		<Unit filename="meta/Meta.h" />
+		<Unit filename="meta/MetaBlock.cpp" />
+		<Unit filename="meta/MetaBlock.h" />
+		<Unit filename="meta/MetaLine.cpp" />
+		<Unit filename="meta/MetaLine.h" />
 		<Unit filename="model/AstInstructions.h" />
 		<Unit filename="model/Attribute.h" />
 		<Unit filename="model/Block.cpp" />
@@ -86,6 +104,7 @@
 		<Unit filename="model/Context.h" />
 		<Unit filename="model/Instruction.cpp" />
 		<Unit filename="model/Instruction.h" />
+		<Unit filename="model/LowInstruction.h" />
 		<Unit filename="model/Module.cpp" />
 		<Unit filename="model/Module.h" />
 		<Unit filename="model/Protocol.h" />
