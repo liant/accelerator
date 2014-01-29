@@ -8,6 +8,11 @@ MetaBlock::MetaBlock()
 MetaBlock::~MetaBlock()
 {
     //dtor
+    for(auto item:mMetaLines)
+    {
+        delete item;
+    }
+    mMetaLines.clear();
 }
 
 void MetaBlock::addMetaLine(MetaLine *pMetaLine)

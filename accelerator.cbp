@@ -74,6 +74,8 @@
 		<Unit filename="error/Tip.cpp" />
 		<Unit filename="files/FileHeader.cpp" />
 		<Unit filename="files/FileHeader.h" />
+		<Unit filename="files/FilePrinter.cpp" />
+		<Unit filename="files/FilePrinter.h" />
 		<Unit filename="files/ObjectFile.cpp" />
 		<Unit filename="files/ObjectFile.h" />
 		<Unit filename="files/PackageFile.cpp" />

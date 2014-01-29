@@ -15,9 +15,9 @@ class Package:public Module
         virtual ~Package();
         void addImports(std::list<Type*> *pImports);
         void build(Context *pContext);
-    protected:
         Type *packagename;
         std::list<Type*> mImports;
+    protected:
     private:
 };
 

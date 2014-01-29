@@ -59,6 +59,8 @@ class ObjectFile
         Package *read();
     protected:
         FileHeader header=FileHeader(0x12032142,0,1);
+        //将整个包,以文本方式输出
+        void print(Package *pPackage);
     private:
         std::fstream file;
 };

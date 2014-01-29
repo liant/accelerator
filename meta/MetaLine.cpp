@@ -10,6 +10,9 @@ MetaLine::MetaLine(uintptr_t line):line(line)
 MetaLine::~MetaLine()
 {
     //dtor
+    for(auto item:mMetaList)
+        delete item;
+    mMetaList.clear();
 }
 
 void MetaLine::addMeta(Meta *pMeta)
